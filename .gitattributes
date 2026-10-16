@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.ps1 text eol=crlf
+
+# Fixtures are snapshots of real responses; keep them byte-for-byte.
+tests/fixtures/** -text
