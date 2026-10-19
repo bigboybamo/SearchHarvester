@@ -154,15 +154,24 @@ Add a test that reproduces a known JobSearchBuilder output byte-for-byte.
 ## Health Check Design
 
 For each entry in `AtsSourceGroups[].Domains`:
-1. **DNS + HTTP probe:** does it resolve, and what status code and final URL does it return? A redirect to a different host is a strong "domain moved" signal.
+1. **DNS + HTTP probe:** does it resolve, and what status code and final URL does it return?
 2. **Known-board probe** (ATSes with an `AtsClient`): do the known boards for that platform still return 200 with jobs?
-3. **Result-volume signal** (once harvester history exists): has the platform's `site:` query returned 0 results for 30+ days?
+3. **Result-volume signal** (once harvester history exists): has the platform's `site:` query returned 0 results for 30+ days? *Not built yet.*
+
+**Rules as implemented** (`health_probes.py`). They're based on a survey of all 93 live entries on 2026-10-19; a naive "non-200 = broken" check would have flagged ~44 entries, nearly all false.
+- **Bare hosts are judged by DNS only.** Their root pages routinely redirect to the vendor's marketing site (`job-boards.greenhouse.io` → `www.greenhouse.com`), 404, or refuse connections (`myworkdayjobs.com`), and none of that affects `site:` searches. A host also passes if only `www.` resolves (`isdb.org`) or if a random subdomain resolves, i.e. it serves companies on subdomains (`jobs.personio.com`).
+- **"Domain moved" is detected on board pages, not root pages.** For ATS hosts, `board_url(canary)` is fetched on the entry's host; a redirect to another host is a problem (`boards.greenhouse.io/discord` → `job-boards.greenhouse.io`). Board-page status is otherwise weak evidence (Ashby returns 200 for boards that don't exist), so whether a board exists comes from the jobs API.
+- **Canary boards** live on each client (`canary_slugs`). The platform is a problem only if *no* canary lists at least one job; 200 with zero jobs doesn't count as healthy.
+- **Page entries** (host + path) are a problem on 404/410, a redirect to the home page or another site, other 4xx/5xx, a certificate error, or no response.
+- **401/403/406/429/451 are bot blocks**, reported as "could not verify" and never counted as problems.
+- **Certificate errors are not retried** (they're deterministic); other transport errors and 5xx are.
 
 Output: **one** open issue on JobSearchBuilder titled `ATS domain health check: N problem(s)`, with a table of failing entries and evidence.
 - If an open issue with that title prefix already exists, **edit it**. Never open duplicates.
 - If everything passes and an issue is open, comment and close it.
 - Label it `bug`, which already exists on that repo.
 - Network flakiness is not staleness. Retry before reporting, and only flag an entry that fails on two consecutive runs. Use a workflow artifact or cache to remember the previous run.
+  - Implemented with a `healthcheck-state` **artifact** (90-day retention), not the cache: GitHub evicts caches after 7 days without use, which is exactly the gap between weekly runs. Manual runs default to dry runs and never upload state, so they can't count as one of the two runs.
 
 ---
 

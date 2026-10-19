@@ -13,14 +13,14 @@ Design and conventions: [CLAUDE.md](CLAUDE.md).
 
 ## Status
 
-Early development. **Neither CLI exists yet.** What works today is the shared foundation: settings,
-the `appsettings.json` parser, the HTTP client, and ATS clients for Greenhouse, Lever, Ashby and
-Workable (`harvester.ats`). See the roadmap in [CLAUDE.md](CLAUDE.md#roadmap):
+Early development. See the roadmap in [CLAUDE.md](CLAUDE.md#roadmap):
 
-| Tool | Command | Arrives in |
+| Tool | Command | Status |
 |---|---|---|
-| Health check | `python -m harvester.healthcheck` | Phase 4 |
+| Health check | `python -m harvester.healthcheck` | Available |
 | Harvester | `python -m harvester.harvest` | Phase 7 (needs new tables in JobSearchBuilder) |
+
+The shared ATS clients for Greenhouse, Lever, Ashby and Workable live in `harvester.ats`.
 
 ## Setup (Windows)
 
@@ -51,7 +51,34 @@ and fill in what you need; `.env` is git-ignored.
 | `JSB_GITHUB_TOKEN` | health check | Fine-grained PAT, Issues read & write on JobSearchBuilder |
 | `JSB_APPSETTINGS_URL` | both | Optional; a URL or local file path overriding the default GitHub raw URL |
 
-## Running what exists today
+## Health check
+
+Probes every `AtsSourceGroups` entry and keeps one issue on JobSearchBuilder up to date. An entry
+is reported only after failing on two consecutive runs. See
+[CLAUDE.md](CLAUDE.md#health-check-design) for the rules.
+
+Try it locally without touching GitHub (makes read-only requests to every entry, takes a few
+minutes):
+
+```powershell
+python -m harvester.healthcheck --dry-run
+```
+
+A second dry run fed with the first run's state shows what would be reported:
+
+```powershell
+python -m harvester.healthcheck --dry-run --state-out state.json
+python -m harvester.healthcheck --dry-run --state-in state.json
+```
+
+It runs weekly through [`.github/workflows/healthcheck.yml`](.github/workflows/healthcheck.yml)
+(Mondays 06:17 UTC). Manual runs from the Actions tab are dry runs unless you untick the option.
+The workflow needs one repository secret:
+
+- `JSB_GITHUB_TOKEN`: a fine-grained personal access token with **Issues: read and write** on
+  `bigboybamo/JobSearchBuilder` only.
+
+## Development checks
 
 Run the tests and linters:
 

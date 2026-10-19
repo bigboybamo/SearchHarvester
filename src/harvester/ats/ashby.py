@@ -52,6 +52,7 @@ class _JobBoardResponse(BaseModel):
 
 class AshbyClient:
     name = NAME
+    canary_slugs = ("linear", "ramp")
 
     def __init__(self, http: httpx.Client) -> None:
         self._http = http
@@ -65,6 +66,9 @@ class AshbyClient:
             return None
         segments = path_segments(parts)
         return normalise_slug(segments[0]) if segments else None
+
+    def board_url(self, slug: str) -> str:
+        return f"https://jobs.ashbyhq.com/{require_slug(slug)}"
 
     def fetch_jobs(self, slug: str) -> list[Posting]:
         # Ashby echoes the requested slug's case into jobUrl, so a lower-case slug also keeps
