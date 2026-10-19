@@ -1,0 +1,11 @@
+{
+  "search_metadata": {
+    "id": "6710f0000000000000000001",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google",
+    "q": "site:jobs.lever.co \"zzqx-no-such-term\""
+  },
+  "error": "Google hasn't returned any results for this query."
+}

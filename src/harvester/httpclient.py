@@ -34,11 +34,16 @@ def get_with_retry(
     client: httpx.Client,
     url: str,
     *,
+    params: Mapping[str, str | int] | None = None,
+    headers: Mapping[str, str] | None = None,
     attempts: int = 3,
     backoff_seconds: float = 1.0,
     sleep: Callable[[float], None] | None = None,
 ) -> httpx.Response:
     """GET `url`, retrying transport errors and 429/5xx responses with exponential backoff.
+
+    `params` are added to the query string but never logged, so secrets such as an API key
+    passed there stay out of logs. Only `url` itself appears in log messages.
 
     The final response is returned whatever its status; callers decide what counts as failure.
     A transport error on the final attempt is re-raised, and a certificate verification error
@@ -51,7 +56,7 @@ def get_with_retry(
     for attempt in range(1, attempts + 1):
         delay = backoff_seconds * 2 ** (attempt - 1)
         try:
-            response = client.get(url)
+            response = client.get(url, params=params, headers=headers)
         except httpx.TransportError as exc:
             if attempt == attempts or is_certificate_error(exc):
                 raise

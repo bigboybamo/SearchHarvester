@@ -1,6 +1,7 @@
 import pytest
 
-from harvester.ats.base import html_to_text, normalise_slug, require_slug
+from harvester.ats.base import normalise_slug, require_slug
+from harvester.text import html_to_text
 
 
 def test_html_to_text_blocks_become_lines() -> None:

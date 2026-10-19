@@ -20,7 +20,9 @@ Early development. See the roadmap in [CLAUDE.md](CLAUDE.md#roadmap):
 | Health check | `python -m harvester.healthcheck` | Available |
 | Harvester | `python -m harvester.harvest` | Phase 7 (needs new tables in JobSearchBuilder) |
 
-The shared ATS clients for Greenhouse, Lever, Ashby and Workable live in `harvester.ats`.
+The shared ATS clients for Greenhouse, Lever, Ashby and Workable live in `harvester.ats`; the
+Brave and SerpAPI search providers live in `harvester.search`. The search providers are built
+from their documentation and have not yet been verified against live calls.
 
 ## Setup (Windows)
 
@@ -77,6 +79,22 @@ The workflow needs one repository secret:
 
 - `JSB_GITHUB_TOKEN`: a fine-grained personal access token with **Issues: read and write** on
   `bigboybamo/JobSearchBuilder` only.
+
+## Search provider comparison
+
+Decides whether Brave (the default) or SerpAPI should power discovery, using queries that
+JobSearchBuilder actually generated. Put one query per line in `queries.txt` (git-ignored, since
+it carries your profile keywords), set `BRAVE_API_KEY` and `SERPAPI_API_KEY` in `.env`, then:
+
+```powershell
+python -m harvester.search.compare queries.txt --out comparison.md
+```
+
+Every search is billed, so the script works out the number of paid searches before making any
+request and refuses to go over `--max-searches` (default 20). Use `--pages N` to compare deeper
+result pages and `--providers brave` to run one provider only. The report shows, per query and
+overall, how many distinct ATS boards each provider found per paid search and any errors, such
+as a provider rejecting a long `OR` query.
 
 ## Development checks
 

@@ -11,7 +11,6 @@ from pydantic import BaseModel, ConfigDict, ValidationError
 from harvester.ats.base import (
     AtsError,
     get_json,
-    html_to_text,
     normalise_slug,
     path_segments,
     probe_endpoint,
@@ -19,6 +18,7 @@ from harvester.ats.base import (
     split_url,
 )
 from harvester.models import Posting, ProbeResult
+from harvester.text import html_to_text
 
 logger = logging.getLogger(__name__)
 

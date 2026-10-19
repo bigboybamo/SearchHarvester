@@ -1,5 +1,7 @@
-# Secrets
+# Secrets and personal data
 .env
+queries.txt
+comparison.md
 
 # Python
 __pycache__/
