@@ -1,5 +1,6 @@
 """Data models shared across the harvester and the health check."""
 
+from datetime import datetime
 from enum import StrEnum
 
 from pydantic import BaseModel, ConfigDict
@@ -52,3 +53,42 @@ class AtsSourceGroup(BaseModel):
     def has_corrupted_name(self) -> bool:
         """True when the name contains U+FFFD, i.e. it was saved with the wrong encoding."""
         return REPLACEMENT_CHAR in self.name
+
+
+class Posting(BaseModel):
+    """One job posting as returned by an ATS jobs API."""
+
+    model_config = ConfigDict(frozen=True)
+
+    ats_name: str
+    company_slug: str
+    ats_job_id: str
+    title: str
+    location: str
+    """Free-text location as the ATS reports it; empty when the ATS gives none."""
+
+    url: str
+    """Public posting URL. This is the de-duplication key in `JobPostings`."""
+
+    posted_at: datetime | None
+    """Timezone-aware publish time, when the ATS exposes one."""
+
+    description: str = ""
+    """Plain-text description, used to match stack and role terms locally."""
+
+
+class ProbeResult(BaseModel):
+    """Outcome of checking whether a known board is still live."""
+
+    model_config = ConfigDict(frozen=True)
+
+    ats_name: str
+    slug: str
+    ok: bool
+    """True when the jobs API answered 200 with a parseable body, even if the board has no jobs."""
+
+    status_code: int | None = None
+    """HTTP status of the final response; `None` when no response arrived (e.g. DNS failure)."""
+
+    job_count: int | None = None
+    error: str | None = None
