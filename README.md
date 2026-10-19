@@ -14,7 +14,8 @@ Design and conventions: [CLAUDE.md](CLAUDE.md).
 ## Status
 
 Early development. **Neither CLI exists yet.** What works today is the shared foundation: settings,
-the `appsettings.json` parser and the HTTP client. See the roadmap in [CLAUDE.md](CLAUDE.md#roadmap):
+the `appsettings.json` parser, the HTTP client, and ATS clients for Greenhouse, Lever, Ashby and
+Workable (`harvester.ats`). See the roadmap in [CLAUDE.md](CLAUDE.md#roadmap):
 
 | Tool | Command | Arrives in |
 |---|---|---|
