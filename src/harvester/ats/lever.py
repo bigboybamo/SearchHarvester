@@ -52,6 +52,7 @@ class _Posting(BaseModel):
 
 class LeverClient:
     name = NAME
+    canary_slugs = ("spotify", "palantir")
 
     def __init__(self, http: httpx.Client) -> None:
         self._http = http
@@ -65,6 +66,9 @@ class LeverClient:
             return None
         segments = path_segments(parts)
         return normalise_slug(segments[0]) if segments else None
+
+    def board_url(self, slug: str) -> str:
+        return f"https://jobs.lever.co/{require_slug(slug)}"
 
     def fetch_jobs(self, slug: str) -> list[Posting]:
         slug = require_slug(slug)

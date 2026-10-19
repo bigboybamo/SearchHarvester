@@ -30,12 +30,20 @@ class AtsClient(Protocol):
     name: str
     """Stored as `Companies.AtsName`."""
 
+    canary_slugs: tuple[str, ...]
+    """Large, long-lived boards the health check probes to tell a platform outage or move from
+    one company closing its board. At least one must stay healthy."""
+
     def matches(self, url: str) -> bool:
         """True when `url` is on one of this ATS's board hosts."""
         ...
 
     def parse_url(self, url: str) -> str | None:
         """The company slug in a board or posting URL, or `None` if there isn't one."""
+        ...
+
+    def board_url(self, slug: str) -> str:
+        """The public board page for `slug` on the ATS's current host (`Companies.BoardUrl`)."""
         ...
 
     def fetch_jobs(self, slug: str) -> list[Posting]:

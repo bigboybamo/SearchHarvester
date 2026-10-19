@@ -75,3 +75,20 @@ def test_get_unknown_name_raises(registry: AtsRegistry) -> None:
 def test_registry_duplicate_names_raises(http: httpx.Client) -> None:
     with pytest.raises(ValueError, match="duplicate"):
         AtsRegistry([LeverClient(http), LeverClient(http)])
+
+
+def test_board_url_round_trips_through_parse_url_for_every_canary(registry: AtsRegistry) -> None:
+    for client in registry.clients:
+        assert client.canary_slugs, client.name
+        for slug in client.canary_slugs:
+            url = client.board_url(slug)
+            assert url.startswith("https://"), url
+            assert client.matches(url), url
+            assert client.parse_url(url) == slug, url
+            assert registry.client_for(url) is client, url
+
+
+def test_board_url_invalid_slug_raises(registry: AtsRegistry) -> None:
+    for client in registry.clients:
+        with pytest.raises(ValueError):
+            client.board_url("../admin")

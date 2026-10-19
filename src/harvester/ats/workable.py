@@ -51,6 +51,8 @@ class _AccountResponse(BaseModel):
 
 class WorkableClient:
     name = NAME
+    # Three, because Workable boards are small and can briefly drop to zero openings.
+    canary_slugs = ("huggingface", "epignosis", "blueground")
 
     def __init__(self, http: httpx.Client) -> None:
         self._http = http
@@ -66,6 +68,9 @@ class WorkableClient:
         if not segments or segments[0].lower() in RESERVED_SEGMENTS:
             return None
         return normalise_slug(segments[0])
+
+    def board_url(self, slug: str) -> str:
+        return f"https://apply.workable.com/{require_slug(slug)}/"
 
     def fetch_jobs(self, slug: str) -> list[Posting]:
         slug = require_slug(slug)

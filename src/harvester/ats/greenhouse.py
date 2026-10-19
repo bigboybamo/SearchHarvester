@@ -50,6 +50,7 @@ class _JobsResponse(BaseModel):
 
 class GreenhouseClient:
     name = NAME
+    canary_slugs = ("discord", "gitlab")
 
     def __init__(self, http: httpx.Client) -> None:
         self._http = http
@@ -68,6 +69,9 @@ class GreenhouseClient:
             # Embedded boards: boards.greenhouse.io/embed/job_board?for={slug}
             return normalise_slug(parse_qs(parts.query).get("for", [None])[0])
         return normalise_slug(segments[0])
+
+    def board_url(self, slug: str) -> str:
+        return f"https://job-boards.greenhouse.io/{require_slug(slug)}"
 
     def fetch_jobs(self, slug: str) -> list[Posting]:
         slug = require_slug(slug)

@@ -1,7 +1,8 @@
 """Shared HTTP plumbing: timeouts, User-Agent and retry with backoff."""
 
 import logging
-from collections.abc import Callable
+import ssl
+from collections.abc import Callable, Mapping
 from time import sleep as _sleep
 
 import httpx
@@ -18,11 +19,13 @@ RETRY_STATUSES = frozenset({429, 500, 502, 503, 504})
 MAX_RETRY_AFTER_SECONDS = 60.0
 
 
-def create_client(*, follow_redirects: bool = True) -> httpx.Client:
-    """Return an `httpx.Client` with the project's timeout and User-Agent."""
+def create_client(
+    *, follow_redirects: bool = True, headers: Mapping[str, str] | None = None
+) -> httpx.Client:
+    """Return an `httpx.Client` with the project's timeout and User-Agent, plus any `headers`."""
     return httpx.Client(
         timeout=DEFAULT_TIMEOUT,
-        headers={"User-Agent": USER_AGENT},
+        headers={"User-Agent": USER_AGENT, **(headers or {})},
         follow_redirects=follow_redirects,
     )
 
@@ -38,7 +41,8 @@ def get_with_retry(
     """GET `url`, retrying transport errors and 429/5xx responses with exponential backoff.
 
     The final response is returned whatever its status; callers decide what counts as failure.
-    A transport error on the final attempt is re-raised.
+    A transport error on the final attempt is re-raised, and a certificate verification error
+    is re-raised at once: it won't go away on retry.
     """
     if attempts < 1:
         raise ValueError("attempts must be at least 1")
@@ -49,7 +53,7 @@ def get_with_retry(
         try:
             response = client.get(url)
         except httpx.TransportError as exc:
-            if attempt == attempts:
+            if attempt == attempts or is_certificate_error(exc):
                 raise
             logger.warning("GET %s failed (%s); retry %d/%d", url, exc, attempt, attempts - 1)
         else:
@@ -66,6 +70,24 @@ def get_with_retry(
         sleep(delay)
 
     raise AssertionError("unreachable")
+
+
+def is_certificate_error(exc: BaseException) -> bool:
+    """True when `exc` was caused by certificate verification failing (expired, wrong host...).
+
+    Other TLS errors, such as a connection dropped mid-handshake, can be transient and are not
+    included.
+    """
+    seen: set[int] = set()
+    current: BaseException | None = exc
+    while current is not None and id(current) not in seen:
+        if isinstance(current, ssl.SSLCertVerificationError) or (
+            "CERTIFICATE_VERIFY_FAILED" in str(current)
+        ):
+            return True
+        seen.add(id(current))
+        current = current.__cause__ or current.__context__
+    return False
 
 
 def _retry_after(response: httpx.Response) -> float | None:

@@ -1,0 +1,77 @@
+name: Health check
+
+on:
+  schedule:
+    - cron: "17 6 * * 1" # Mondays 06:17 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the report only; don't touch the JobSearchBuilder issue or saved state"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  actions: read # download the previous run's state artifact
+
+concurrency:
+  group: healthcheck
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # Scheduled runs are always real; manual runs default to dry runs.
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install .
+
+      - name: Restore previous state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p previous
+          run_id=$(gh api "repos/${{ github.repository }}/actions/artifacts?name=healthcheck-state&per_page=20" \
+            --jq '[.artifacts[] | select(.expired | not)][0].workflow_run.id // empty')
+          if [ -n "$run_id" ]; then
+            gh run download "$run_id" --name healthcheck-state --dir previous
+          else
+            echo "No previous state; new failures will be confirmed on the next run."
+          fi
+
+      - name: Run health check
+        # An explicit shell adds pipefail, so a failing check isn't masked by `tee`.
+        shell: bash
+        env:
+          JSB_GITHUB_TOKEN: ${{ secrets.JSB_GITHUB_TOKEN }}
+        run: |
+          args="--state-in previous/healthcheck-state.json"
+          if [ "$DRY_RUN" = "true" ]; then
+            args="$args --dry-run"
+          else
+            args="$args --state-out healthcheck-state.json"
+          fi
+          python -m harvester.healthcheck $args | tee report.md
+
+      - name: Save state for the next run
+        if: env.DRY_RUN != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: healthcheck-state
+          path: healthcheck-state.json
+          retention-days: 90
+
+      - name: Add report to the run summary
+        if: always()
+        run: |
+          if [ -f report.md ]; then cat report.md >> "$GITHUB_STEP_SUMMARY"; fi
