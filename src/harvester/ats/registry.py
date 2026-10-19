@@ -4,9 +4,11 @@ from collections.abc import Iterable
 
 import httpx
 
+from harvester.ats.ashby import AshbyClient
 from harvester.ats.base import AtsClient
 from harvester.ats.greenhouse import GreenhouseClient
 from harvester.ats.lever import LeverClient
+from harvester.ats.workable import WorkableClient
 
 
 class AtsRegistry:
@@ -42,4 +44,6 @@ class AtsRegistry:
 
 def default_registry(http: httpx.Client) -> AtsRegistry:
     """Every supported ATS, sharing one HTTP client."""
-    return AtsRegistry([GreenhouseClient(http), LeverClient(http)])
+    return AtsRegistry(
+        [GreenhouseClient(http), LeverClient(http), AshbyClient(http), WorkableClient(http)]
+    )

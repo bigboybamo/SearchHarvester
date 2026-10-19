@@ -1,7 +1,7 @@
 import httpx
 import pytest
 
-from harvester.ats import AtsClient, GreenhouseClient, LeverClient
+from harvester.ats import AshbyClient, AtsClient, GreenhouseClient, LeverClient, WorkableClient
 from harvester.ats.registry import AtsRegistry, default_registry
 
 
@@ -11,7 +11,12 @@ def registry(http: httpx.Client) -> AtsRegistry:
 
 
 def test_default_registry_clients_satisfy_protocol(registry: AtsRegistry) -> None:
-    assert [client.name for client in registry.clients] == ["Greenhouse", "Lever"]
+    assert [client.name for client in registry.clients] == [
+        "Greenhouse",
+        "Lever",
+        "Ashby",
+        "Workable",
+    ]
     assert all(isinstance(client, AtsClient) for client in registry.clients)
 
 
@@ -26,7 +31,7 @@ def test_client_for_lever_url_returns_lever(registry: AtsRegistry) -> None:
 
 
 @pytest.mark.parametrize(
-    "url", ["https://apply.workable.com/acme", "https://example.com", "not a url", ""]
+    "url", ["https://jobs.smartrecruiters.com/acme", "https://example.com", "not a url", ""]
 )
 def test_client_for_unsupported_url_returns_none(registry: AtsRegistry, url: str) -> None:
     assert registry.client_for(url) is None
@@ -41,6 +46,19 @@ def test_resolve_posting_url_returns_client_and_slug(registry: AtsRegistry) -> N
     assert slug == "spotify"
 
 
+def test_client_for_ashby_url_returns_ashby(registry: AtsRegistry) -> None:
+    assert isinstance(registry.client_for("https://jobs.ashbyhq.com/linear"), AshbyClient)
+
+
+def test_client_for_workable_url_returns_workable(registry: AtsRegistry) -> None:
+    assert isinstance(registry.client_for("apply.workable.com/huggingface/"), WorkableClient)
+
+
+def test_resolve_workable_short_link_returns_none(registry: AtsRegistry) -> None:
+    # apply.workable.com/j/{shortcode} only redirects to the board; the URL has no slug.
+    assert registry.resolve("https://apply.workable.com/j/81B46579FE") is None
+
+
 def test_resolve_known_host_without_slug_returns_none(registry: AtsRegistry) -> None:
     assert registry.resolve("https://job-boards.greenhouse.io/") is None
 
@@ -51,7 +69,7 @@ def test_get_known_name_returns_client(registry: AtsRegistry) -> None:
 
 def test_get_unknown_name_raises(registry: AtsRegistry) -> None:
     with pytest.raises(KeyError):
-        registry.get("Workable")
+        registry.get("SmartRecruiters")
 
 
 def test_registry_duplicate_names_raises(http: httpx.Client) -> None:
