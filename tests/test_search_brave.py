@@ -1,5 +1,6 @@
-"""Fixtures `brave_*_documented.json` are hand-written from Brave's documentation (2026-10-19), not
-captured: no API key was available. Replace them with live captures on the first real call."""
+"""Fixtures are trimmed live captures (2026-10-20): `brave_web_search.json` is the first five
+results for `site:jobs.lever.co "python"`, `brave_no_results.json` a query matching nothing, and
+`brave_invalid_token.json` the response to a deliberately invalid token."""
 
 import httpx
 import pytest
@@ -25,52 +26,69 @@ def test_brave_satisfies_protocol(brave: BraveProvider) -> None:
 def test_search_request_sends_token_header_and_paging(
     brave: BraveProvider, respx_mock: respx.MockRouter
 ) -> None:
-    route = respx_mock.get(ENDPOINT).respond(
-        200, content=load_fixture("brave_web_search_documented.json")
-    )
+    route = respx_mock.get(ENDPOINT).respond(200, content=load_fixture("brave_web_search.json"))
 
-    brave.search("  site:jobs.lever.co (Python)  ", page=2)
+    brave.search('  site:jobs.lever.co "python"  ', page=2)
 
     request = route.calls.last.request
     assert request.headers["X-Subscription-Token"] == KEY
     assert request.headers["Accept"] == "application/json"
     assert dict(request.url.params) == {
-        "q": "site:jobs.lever.co (Python)",
+        "q": 'site:jobs.lever.co "python"',
         "count": "20",
         "offset": "2",
     }
 
 
-def test_search_fixture_returns_hits_with_html_stripped(
-    brave: BraveProvider, respx_mock: respx.MockRouter
-) -> None:
-    respx_mock.get(ENDPOINT).respond(200, content=load_fixture("brave_web_search_documented.json"))
+def test_search_fixture_returns_hits(brave: BraveProvider, respx_mock: respx.MockRouter) -> None:
+    respx_mock.get(ENDPOINT).respond(200, content=load_fixture("brave_web_search.json"))
 
     hits = brave.search("q")
 
-    assert [hit.rank for hit in hits] == [1, 2, 3, 4]
+    assert [hit.rank for hit in hits] == [1, 2, 3, 4, 5]
+    assert [hit.url.split("/")[3] for hit in hits] == [
+        "betr",
+        "muttdata",
+        "jobgether",
+        "trackmind",
+        "bluelightconsulting",
+    ]
     first = hits[0]
     assert first.provider == "brave"
-    assert first.title == "Acme Robotics - Senior Python Engineer"
-    assert first.url == "https://jobs.lever.co/acme-robotics/0b1f2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d"
-    assert (
-        first.snippet == "Acme Robotics is hiring a Senior Python Engineer & mentor. Remote (EU)."
-    )
-    assert hits[2].snippet == ""
+    assert first.title == "Betr - Senior Backend Engineer (PHP/Python)"
+    assert first.url == "https://jobs.lever.co/betr/fc7cd746-f746-43d5-89b1-fe92bf508a68"
+    assert first.snippet.startswith("The Betr team is seeking a highly skilled Senior Backend")
+
+
+def test_search_text_with_angle_brackets_kept_verbatim(
+    brave: BraveProvider, respx_mock: respx.MockRouter
+) -> None:
+    # Brave returns plain text, so `<` must not be treated as the start of an HTML tag.
+    body = {
+        "web": {
+            "results": [{"title": "C<b>++  dev", "url": "https://x.test", "description": "a\n b"}]
+        }
+    }
+    respx_mock.get(ENDPOINT).respond(200, json=body)
+
+    hit = brave.search("q")[0]
+
+    assert hit.title == "C<b>++ dev"
+    assert hit.snippet == "a b"
 
 
 def test_search_second_page_ranks_continue(
     brave: BraveProvider, respx_mock: respx.MockRouter
 ) -> None:
-    respx_mock.get(ENDPOINT).respond(200, content=load_fixture("brave_web_search_documented.json"))
+    respx_mock.get(ENDPOINT).respond(200, content=load_fixture("brave_web_search.json"))
 
     assert brave.search("q", page=1)[0].rank == 21
 
 
-def test_search_no_web_section_returns_empty(
+def test_search_no_results_returns_empty(
     brave: BraveProvider, respx_mock: respx.MockRouter
 ) -> None:
-    respx_mock.get(ENDPOINT).respond(200, json={"type": "search", "query": {"original": "q"}})
+    respx_mock.get(ENDPOINT).respond(200, content=load_fixture("brave_no_results.json"))
 
     assert brave.search("q") == []
 
@@ -87,29 +105,18 @@ def test_search_malformed_result_skipped(
     assert hits[0].rank == 2
 
 
-def test_search_validation_error_raises_with_detail(
+def test_search_invalid_token_raises_with_detail_and_no_key(
     brave: BraveProvider, respx_mock: respx.MockRouter
 ) -> None:
-    respx_mock.get(ENDPOINT).respond(422, content=load_fixture("brave_error_documented.json"))
+    respx_mock.get(ENDPOINT).respond(422, content=load_fixture("brave_invalid_token.json"))
 
     with pytest.raises(SearchError) as excinfo:
         brave.search("q")
 
     assert excinfo.value.status_code == 422
-    assert str(excinfo.value) == (
-        "brave returned HTTP 422: Unable to validate request parameter(s)"
+    assert (
+        str(excinfo.value) == "brave returned HTTP 422: The provided subscription token is invalid."
     )
-
-
-def test_search_unauthorised_error_never_contains_key(
-    brave: BraveProvider, respx_mock: respx.MockRouter
-) -> None:
-    respx_mock.get(ENDPOINT).respond(401, json={"type": "ErrorResponse", "error": {"code": "AUTH"}})
-
-    with pytest.raises(SearchError) as excinfo:
-        brave.search("q")
-
-    assert excinfo.value.status_code == 401
     assert KEY not in str(excinfo.value)
 
 
@@ -126,10 +133,10 @@ def test_search_rate_limited_then_ok_retried(
     route = respx_mock.get(ENDPOINT)
     route.side_effect = [
         httpx.Response(429, headers={"Retry-After": "1"}),
-        httpx.Response(200, content=load_fixture("brave_web_search_documented.json")),
+        httpx.Response(200, content=load_fixture("brave_web_search.json")),
     ]
 
-    assert len(brave.search("q")) == 4
+    assert len(brave.search("q")) == 5
     assert route.call_count == 2
 
 

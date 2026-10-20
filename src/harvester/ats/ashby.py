@@ -24,6 +24,8 @@ logger = logging.getLogger(__name__)
 NAME = "Ashby"
 HOSTS = frozenset({"jobs.ashbyhq.com"})
 API_BASE = "https://api.ashbyhq.com/posting-api/job-board"
+# Ashby ignores slug case but echoes it into jobUrl; lower-casing keeps posting URLs stable.
+LOWERCASE_SLUGS = True
 
 
 class _SecondaryLocation(BaseModel):
@@ -65,15 +67,15 @@ class AshbyClient:
         if parts.hostname not in HOSTS:
             return None
         segments = path_segments(parts)
-        return normalise_slug(segments[0]) if segments else None
+        return normalise_slug(segments[0], lowercase=LOWERCASE_SLUGS) if segments else None
 
     def board_url(self, slug: str) -> str:
-        return f"https://jobs.ashbyhq.com/{require_slug(slug)}"
+        return f"https://jobs.ashbyhq.com/{require_slug(slug, lowercase=LOWERCASE_SLUGS)}"
 
     def fetch_jobs(self, slug: str) -> list[Posting]:
         # Ashby echoes the requested slug's case into jobUrl, so a lower-case slug also keeps
         # posting URLs stable for de-duplication.
-        slug = require_slug(slug)
+        slug = require_slug(slug, lowercase=LOWERCASE_SLUGS)
         response = self._parse_response(get_json(self._http, f"{API_BASE}/{slug}"))
         postings: list[Posting] = []
         for item in response.jobs:
@@ -99,7 +101,7 @@ class AshbyClient:
         return postings
 
     def probe(self, slug: str) -> ProbeResult:
-        slug = require_slug(slug)
+        slug = require_slug(slug, lowercase=LOWERCASE_SLUGS)
         return probe_endpoint(
             NAME,
             slug,

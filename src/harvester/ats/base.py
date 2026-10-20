@@ -11,7 +11,7 @@ import httpx
 from harvester.httpclient import get_with_retry
 from harvester.models import Posting, ProbeResult
 
-SLUG_PATTERN = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
+SLUG_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 
 
 class AtsError(Exception):
@@ -70,21 +70,26 @@ def path_segments(parts: SplitResult) -> list[str]:
     return [segment for segment in parts.path.split("/") if segment]
 
 
-def normalise_slug(candidate: str | None) -> str | None:
-    """Lower-cased slug if it looks like a board slug, else `None`.
+def normalise_slug(candidate: str | None, *, lowercase: bool) -> str | None:
+    """The slug if it looks like a board slug, else `None`.
 
-    Lever slugs are case-sensitive and always lower case; Greenhouse ignores case. Lower-casing
-    therefore works for both and keeps `Companies` free of case-only duplicates.
+    Each client says whether to lower-case, because ATSes differ (all checked live):
+    Greenhouse and Ashby ignore case, so lower-casing avoids case-only duplicates in `Companies`.
+    Lever and Workable are case-sensitive with one canonical spelling, which may have capitals
+    (`jobs.lever.co/SimbeRobotics` works, `simberobotics` is a 404), so their slugs are kept as
+    found. Slugs come from search-result URLs, which carry the canonical spelling.
     """
     if candidate is None:
         return None
-    slug = candidate.strip().lower()
+    slug = candidate.strip()
+    if lowercase:
+        slug = slug.lower()
     return slug if SLUG_PATTERN.match(slug) else None
 
 
-def require_slug(slug: str) -> str:
+def require_slug(slug: str, *, lowercase: bool) -> str:
     """Validated slug for building an API URL. Raises `ValueError` for anything unsafe."""
-    normalised = normalise_slug(slug)
+    normalised = normalise_slug(slug, lowercase=lowercase)
     if normalised is None:
         raise ValueError(f"invalid board slug {slug!r}")
     return normalised

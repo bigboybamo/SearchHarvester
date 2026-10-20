@@ -1,7 +1,10 @@
 """SerpApi (Google results). Use it if Brave handles long `OR` queries poorly.
 
-Response shape is from SerpApi's documentation (2026-10-19) and has **not yet been verified
-against a live call**; `tests/fixtures/serpapi_google.json` is hand-written to match.
+Verified against live calls on 2026-10-20; the fixtures in `tests/fixtures/serpapi_*.json` are
+trimmed captures. Observed: snippets are plain text, and an invalid key is HTTP 401 with an
+`error` string. When a `site:` query matches nothing, Google silently drops the `site:`
+restriction and returns unrelated pages (`serpapi_site_ignored.json`), so hits must never be
+trusted to be on the requested site; discovery keeps only URLs an `AtsClient` recognises.
 
 SerpApi only accepts the key as the `api_key` query parameter, so it is passed through
 `get_with_retry(params=...)`, which never logs parameters.
@@ -13,8 +16,7 @@ import httpx
 from pydantic import BaseModel, ConfigDict, ValidationError
 
 from harvester.models import SearchHit
-from harvester.search.base import SearchError, get_search_json, validate_request
-from harvester.text import html_to_text
+from harvester.search.base import SearchError, clean_text, get_search_json, validate_request
 
 logger = logging.getLogger(__name__)
 
@@ -25,8 +27,8 @@ PAGE_SIZE = 10
 
 MAX_PAGES = 10
 
-# Unverified: SerpApi reports an empty result set as HTTP 200 with this message in `error`,
-# rather than as an empty `organic_results` list. Confirm on the first live run.
+# SerpApi documents an empty result set as HTTP 200 with this message in `error`. Not seen live
+# yet: a no-match `site:` query returned off-site results instead (see module docstring).
 NO_RESULTS_MESSAGE = "hasn't returned any results"
 
 
@@ -88,9 +90,9 @@ class SerpApiProvider:
                 SearchHit(
                     provider=NAME,
                     rank=page * PAGE_SIZE + index + 1,
-                    title=result.title.strip(),
+                    title=clean_text(result.title),
                     url=result.link,
-                    snippet=html_to_text(result.snippet),
+                    snippet=clean_text(result.snippet),
                 )
             )
         return hits

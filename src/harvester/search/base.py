@@ -50,6 +50,11 @@ def validate_request(provider: SearchProvider, query: str, page: int) -> str:
     return text
 
 
+def clean_text(text: str) -> str:
+    """Whitespace-normalised text. Providers return plain text, so nothing is parsed as HTML."""
+    return " ".join(text.split())
+
+
 def get_search_json(
     http: httpx.Client,
     provider: str,

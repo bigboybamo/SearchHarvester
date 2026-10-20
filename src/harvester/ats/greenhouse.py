@@ -25,6 +25,8 @@ logger = logging.getLogger(__name__)
 NAME = "Greenhouse"
 HOSTS = frozenset({"job-boards.greenhouse.io", "boards.greenhouse.io"})
 API_BASE = "https://boards-api.greenhouse.io/v1/boards"
+# Greenhouse ignores slug case, so lower-case to avoid case-only duplicates.
+LOWERCASE_SLUGS = True
 
 
 class _Location(BaseModel):
@@ -67,14 +69,16 @@ class GreenhouseClient:
             return None
         if segments[0] == "embed":
             # Embedded boards: boards.greenhouse.io/embed/job_board?for={slug}
-            return normalise_slug(parse_qs(parts.query).get("for", [None])[0])
-        return normalise_slug(segments[0])
+            return normalise_slug(
+                parse_qs(parts.query).get("for", [None])[0], lowercase=LOWERCASE_SLUGS
+            )
+        return normalise_slug(segments[0], lowercase=LOWERCASE_SLUGS)
 
     def board_url(self, slug: str) -> str:
-        return f"https://job-boards.greenhouse.io/{require_slug(slug)}"
+        return f"https://job-boards.greenhouse.io/{require_slug(slug, lowercase=LOWERCASE_SLUGS)}"
 
     def fetch_jobs(self, slug: str) -> list[Posting]:
-        slug = require_slug(slug)
+        slug = require_slug(slug, lowercase=LOWERCASE_SLUGS)
         # content=true adds the description, which the harvester needs for keyword matching.
         response = self._parse_response(
             get_json(self._http, f"{API_BASE}/{slug}/jobs?content=true")
@@ -102,7 +106,7 @@ class GreenhouseClient:
         return postings
 
     def probe(self, slug: str) -> ProbeResult:
-        slug = require_slug(slug)
+        slug = require_slug(slug, lowercase=LOWERCASE_SLUGS)
         return probe_endpoint(
             NAME,
             slug,

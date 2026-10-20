@@ -1,0 +1,135 @@
+{
+  "search_metadata": {
+    "id": "6ad74d14e59325b1b673c9e9",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/UM51-GON2U-hybVkQjuA3sc-6Aoh-7BRJ1SV7mC-AAU/6ad74d14e59325b1b673c9e9.json",
+    "markdown_endpoint": "https://serpapi.com/searches/UM51-GON2U-hybVkQjuA3sc-6Aoh-7BRJ1SV7mC-AAU/6ad74d14e59325b1b673c9e9.md",
+    "pixel_position_endpoint": "https://serpapi.com/searches/UM51-GON2U-hybVkQjuA3sc-6Aoh-7BRJ1SV7mC-AAU/6ad74d14e59325b1b673c9e9.json_with_pixel_position",
+    "created_at": "2026-10-20 11:14:28 UTC",
+    "processed_at": "2026-10-20 11:14:28 UTC",
+    "google_url": "https://www.google.com/search?q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&oq=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&sourceid=chrome&ie=UTF-8",
+    "raw_html_file": "https://serpapi.com/searches/UM51-GON2U-hybVkQjuA3sc-6Aoh-7BRJ1SV7mC-AAU/6ad74d14e59325b1b673c9e9.html",
+    "total_time_taken": 0.62
+  },
+  "search_parameters": {
+    "engine": "google",
+    "q": "site:jobs.lever.co \"zzqx7-no-such-term-8vkq\"",
+    "google_domain": "google.com",
+    "start": 0,
+    "device": "desktop"
+  },
+  "search_information": {
+    "query_displayed": "site:jobs.lever.co \"zzqx7-no-such-term-8vkq\"",
+    "total_results": 74,
+    "time_taken_displayed": 0.15,
+    "organic_results_state": "Results for exact spelling"
+  },
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "Complying with Rule 506(c): Investor Verification Methods ...",
+      "link": "https://www.ascendwithwinstead.com/2024/04/complying-with-rule-506c-investor-verification-methods-explained/",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=CAESpwEB6zswFRdYy7Y7HkTK8vndl1w-OJCZnaslyh9qEEB0uNct_6T5e0A7SgNjx7glw2wh7hC0JDK-1CpOGqoDsE4OSHDbllDIyaf8rXygwC0T1nR_KQIyZ6CprOgLX4IJmbj-boYTZHnxwc2RBumJfA1xJVS38bug1B2mUTrQw_r73XVU7JfR3CLrmjWUExvvE-ugK4lGYnVJqlLSLyZBaD0jpRWMIusK_g&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8QFnoECBoQAQ&uoh=1",
+      "displayed_link": "https://www.ascendwithwinstead.com › Blog",
+      "favicon": "https://serpapi.com/images/i/UklGRpQAAABXRUJQVlA4IIgAAAAQBACdASocABwAPtE-tFooIigoFAEAGglsAHYrubAzOo3lmJfRkSVu5AD-8f_f__r0f_no__PR_n-__7g1PxtTdV872wye74L7AJYR3HVSGkci57dbo1-Ykjsb3SmTPmZdnpSXe2KIH-QNLf7fWWCDj8pB7UsyE334NyNnOQAV360PHGeJRgAA.webp",
+      "date": "Apr 24, 2024",
+      "snippet": "Rule 506(c) lays out a non-exhaustive list of steps an offeror can make to verify the accredited investor status of a purchaser.",
+      "about_this_result": {
+        "source": {
+          "description": "Rule 506(c) lays out a non-exhaustive list of steps an offeror can make to verify the accredited investor status of a purchaser.",
+          "source_info_link": "https://www.ascendwithwinstead.com/2024/04/complying-with-rule-506c-investor-verification-methods-explained/",
+          "icon": "https://serpapi.com/images/i/UklGRpQAAABXRUJQVlA4IIgAAAAQBACdASocABwAPtE-tFooIigoFAEAGglsAHYrubAzOo3lmJfRkSVu5AD-8f_f__r0f_no__PR_n-__7g1PxtTdV872wye74L7AJYR3HVSGkci57dbo1-Ykjsb3SmTPmZdnpSXe2KIH-QNLf7fWWCDj8pB7UsyE334NyNnOQAV360PHGeJRgAA.webp"
+        },
+        "languages": [
+          "en"
+        ],
+        "regions": [
+          "US"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search/about-this-result?origin=www.google.com&req=CuwBL2dvdG8_dXJsPUNBRVNwQUVCNnpzd0ZUTUNyRDVhZnloeWVpaWdkZG5GdDN3Q1NEdWFuWFVWWExGZWZ5YkFTYlBwSFJmWU5lYV8xcEtlM1VvN2d3bUhIUERRRWZncF9MVzAzblpnTDRTdEViTE00dF9jZnd1TEFaOTNIdzh3NFh3WC1NUmViWlcxbmNMMU8ydkVOYlRiZkNnak1FRGEzdDVwTXk4RkI0aC1qZ09Ba1U4UzVvYmlEdTVRSWRzVUxNcnI3cGpJTm9zNHVMbDNqeW5tNlVobC1OM19HdUpWTGtvRGh6Y1owTnpKbVESBBoCCAAanwQSAggAGgAiACoAMgYIARICdXM6AEIECAEQAEoAWgByAHoAgkD5AwgAEAAYACAAKgwKBXp6cXg3FQAAAAAqCQoCbm8VAAAAACoLCgRzdWNoFWlmCz8qCwoEdGVybRXjT6g-KgsKBDh2a3EVAAAAADLsAS9nb3RvP3VybD1DQUVTcEFFQjZ6c3dGVE1DckQ1YWZ5aHllaWlnZGRuRnQzd0NTRHVhblhVVlhMRmVmeWJBU2JQcEhSZllOZWFfMXBLZTNVbzdnd21ISFBEUUVmZ3BfTFcwM25aZ0w0U3RFYkxNNHRfY2Z3dUxBWjkzSHc4dzRYd1gtTVJlYlpXMW5jTDFPMnZFTmJUYmZDZ2pNRURhM3Q1cE15OEZCNGgtamdPQWtVOFM1b2JpRHU1UUlkc1VMTXJyN3BqSU5vczR1TGwzanlubTZVaGwtTjNfR3VKVkxrb0RoemNaME56Sm1ROj1Db21wbHlpbmcgd2l0aCBSdWxlIDUwNihjKTogSW52ZXN0b3IgVmVyaWZpY2F0aW9uIE1ldGhvZHMgLi4uQoABUnVsZSA1MDYoYykgbGF5cyBvdXQgYSBub24tZXhoYXVzdGl2ZSBsaXN0IG9mIHN0ZXBzIGFuIG9mZmVyb3IgY2FuIG1ha2UgdG8gdmVyaWZ5IHRoZSBhY2NyZWRpdGVkIGludmVzdG9yIHN0YXR1cyBvZiBhIHB1cmNoYXNlci4iAhABSABYAGgA",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&req_token=CuwBL2dvdG8_dXJsPUNBRVNwQUVCNnpzd0ZUTUNyRDVhZnloeWVpaWdkZG5GdDN3Q1NEdWFuWFVWWExGZWZ5YkFTYlBwSFJmWU5lYV8xcEtlM1VvN2d3bUhIUERRRWZncF9MVzAzblpnTDRTdEViTE00dF9jZnd1TEFaOTNIdzh3NFh3WC1NUmViWlcxbmNMMU8ydkVOYlRiZkNnak1FRGEzdDVwTXk4RkI0aC1qZ09Ba1U4UzVvYmlEdTVRSWRzVUxNcnI3cGpJTm9zNHVMbDNqeW5tNlVobC1OM19HdUpWTGtvRGh6Y1owTnpKbVESBBoCCAAanwQSAggAGgAiACoAMgYIARICdXM6AEIECAEQAEoAWgByAHoAgkD5AwgAEAAYACAAKgwKBXp6cXg3FQAAAAAqCQoCbm8VAAAAACoLCgRzdWNoFWlmCz8qCwoEdGVybRXjT6g-KgsKBDh2a3EVAAAAADLsAS9nb3RvP3VybD1DQUVTcEFFQjZ6c3dGVE1DckQ1YWZ5aHllaWlnZGRuRnQzd0NTRHVhblhVVlhMRmVmeWJBU2JQcEhSZllOZWFfMXBLZTNVbzdnd21ISFBEUUVmZ3BfTFcwM25aZ0w0U3RFYkxNNHRfY2Z3dUxBWjkzSHc4dzRYd1gtTVJlYlpXMW5jTDFPMnZFTmJUYmZDZ2pNRURhM3Q1cE15OEZCNGgtamdPQWtVOFM1b2JpRHU1UUlkc1VMTXJyN3BqSU5vczR1TGwzanlubTZVaGwtTjNfR3VKVkxrb0RoemNaME56Sm1ROj1Db21wbHlpbmcgd2l0aCBSdWxlIDUwNihjKTogSW52ZXN0b3IgVmVyaWZpY2F0aW9uIE1ldGhvZHMgLi4uQoABUnVsZSA1MDYoYykgbGF5cyBvdXQgYSBub24tZXhoYXVzdGl2ZSBsaXN0IG9mIHN0ZXBzIGFuIG9mZmVyb3IgY2FuIG1ha2UgdG8gdmVyaWZ5IHRoZSBhY2NyZWRpdGVkIGludmVzdG9yIHN0YXR1cyBvZiBhIHB1cmNoYXNlci4iAhABSABYAGgA",
+      "source": "ascendwithwinstead.com"
+    },
+    {
+      "position": 2,
+      "title": "General Solicitation of Investors for Your Financing: Rule ...",
+      "link": "https://www.bipc.com/general-solicitation-of-investors-for-your-financing-rule-506(c)-of-regulation-d",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=CAESoAEB6zswFV_aLqrdinxYF0ndV0H74TJXLXvVC1OYtUCWJwODuO2BODo_NOjCPA_EVqE5fh6_p8cuGjg2rjrxg868vKvOLKMFHGK_xIJi6j5-oZhrspmjO1UjIzPyFRlG87hsnVkluU_STd6LJvqjom11NP8xiVi0CmHPcJVcYpNmX7wXVB92bjGtofotEx5_AH1OiCWXcU5EA22St1nw1ype&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8QFnoECBsQAQ&uoh=1",
+      "displayed_link": "https://www.bipc.com › general-solicitation-of-investors...",
+      "favicon": "https://serpapi.com/images/i/UklGRhABAABXRUJQVlA4IAQBAADwBQCdASocABwAPtEutFooIagoGAEAGgloAJ0ygyrN2-2AFQUK324NWMvspi7QjsmiC8pY_pPWAAD-6-d_w1SmgerFzrKGEsVAZli-9ghYgSTjonfGqj7DwVkX5Fs9sQU53uALqq0ywzV9S17CaFOHI_AobweIAvk3eb_zvH2LjTlcOSsYYZ4CqMmMRb3IJdoSVUJG1-tSkxTfw8oI5q80bBWtYxjD5lx8MwLTvviykX7L_7hsR7ASEx-gFQBrq8zb-QhSVREzHY4pqd-wQMeJ2Z8HySFK6wrl9DraiZe-6389B5bZq8QcZW6t8qoZm_a01gjqVczSU9m7b15ujHuZABAAAA.webp",
+      "date": "Oct 8, 2015",
+      "snippet": "The JOBS Act directed that Rule 506 should include a safe harbor permitting general solicitation so long as all the investors are \"accredited ...",
+      "about_this_result": {
+        "source": {
+          "description": "The JOBS Act directed that Rule 506 should include a safe harbor permitting general solicitation so long as all the investors are \"accredited ...",
+          "source_info_link": "https://www.bipc.com/general-solicitation-of-investors-for-your-financing-rule-506(c)-of-regulation-d",
+          "icon": "https://serpapi.com/images/i/UklGRhABAABXRUJQVlA4IAQBAADwBQCdASocABwAPtEutFooIagoGAEAGgloAJ0ygyrN2-2AFQUK324NWMvspi7QjsmiC8pY_pPWAAD-6-d_w1SmgerFzrKGEsVAZli-9ghYgSTjonfGqj7DwVkX5Fs9sQU53uALqq0ywzV9S17CaFOHI_AobweIAvk3eb_zvH2LjTlcOSsYYZ4CqMmMRb3IJdoSVUJG1-tSkxTfw8oI5q80bBWtYxjD5lx8MwLTvviykX7L_7hsR7ASEx-gFQBrq8zb-QhSVREzHY4pqd-wQMeJ2Z8HySFK6wrl9DraiZe-6389B5bZq8QcZW6t8qoZm_a01gjqVczSU9m7b15ujHuZABAAAA.webp"
+        },
+        "languages": [
+          "en"
+        ],
+        "regions": [
+          "US"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search/about-this-result?origin=www.google.com&req=CuIBL2dvdG8_dXJsPUNBRVNuUUVCNnpzd0ZWeHBzRms5ZURKcTdWNHhHc2Nlc0t4Yi1DUTNxbG96cU5pUEE4S3dHQnk4M3VsNGdla2hQM1lDcTlvRGpyQlcxbXRCNEZhTWNXU2hZR1hWT3M5T09oR2pJd25mRV9mbzNfSjh2TVlMMVBRNk1mMmtkZjVZRmlRWWN6M182dUFpVk9jeFRuQWZxNGxDdTh2OGFxWDBibzlzSWtEZkU1WG9lOC0wbXNlOTVzbmNhR3JRTWFTQlVfTkREUXRBSWI4dWRyYjhxYlBLZ1NzbhIEGgIIABqzBBIAGgAiACoAMgYIARICdXM6AEIECAEQAEoAWgByAHoAgkCPBAgAEAAYACAAKgwKBXp6cXg3FQAAAAAqCQoCbm8VzHUgPioLCgRzdWNoFUJWDT4qCwoEdGVybRUAAAAAKgsKBDh2a3EVAAAAADLiAS9nb3RvP3VybD1DQUVTblFFQjZ6c3dGVnhwc0ZrOWVESnE3VjR4R3NjZXNLeGItQ1EzcWxvenFOaVBBOEt3R0J5ODN1bDRnZWtoUDNZQ3E5b0RqckJXMW10QjRGYU1jV1NoWUdYVk9zOU9PaEdqSXduZkVfZm8zX0o4dk1ZTDFQUTZNZjJrZGY1WUZpUVljejNfNnVBaVZPY3hUbkFmcTRsQ3U4djhhcVgwYm85c0lrRGZFNVhvZTgtMG1zZTk1c25jYUdyUU1hU0JVX05ERFF0QUliOHVkcmI4cWJQS2dTc246QkdlbmVyYWwgU29saWNpdGF0aW9uIG9mIEludmVzdG9ycyBmb3IgWW91ciBGaW5hbmNpbmc6IFJ1bGUgNTA2IC4uLkKbAVRoZSBKT0JTIEFjdCBkaXJlY3RlZCB0aGF0IFJ1bGUgNTA2IHNob3VsZCBpbmNsdWRlIGEgc2FmZSBoYXJib3IgcGVybWl0dGluZyBnZW5lcmFsIHNvbGljaXRhdGlvbiBzbyBsb25nIGFzIGFsbCB0aGUgaW52ZXN0b3JzIGFyZSAmcXVvdDthY2NyZWRpdGVkJm5ic3A7Li4uIgIQAUgAWABoAA",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&req_token=CuIBL2dvdG8_dXJsPUNBRVNuUUVCNnpzd0ZWeHBzRms5ZURKcTdWNHhHc2Nlc0t4Yi1DUTNxbG96cU5pUEE4S3dHQnk4M3VsNGdla2hQM1lDcTlvRGpyQlcxbXRCNEZhTWNXU2hZR1hWT3M5T09oR2pJd25mRV9mbzNfSjh2TVlMMVBRNk1mMmtkZjVZRmlRWWN6M182dUFpVk9jeFRuQWZxNGxDdTh2OGFxWDBibzlzSWtEZkU1WG9lOC0wbXNlOTVzbmNhR3JRTWFTQlVfTkREUXRBSWI4dWRyYjhxYlBLZ1NzbhIEGgIIABqzBBIAGgAiACoAMgYIARICdXM6AEIECAEQAEoAWgByAHoAgkCPBAgAEAAYACAAKgwKBXp6cXg3FQAAAAAqCQoCbm8VzHUgPioLCgRzdWNoFUJWDT4qCwoEdGVybRUAAAAAKgsKBDh2a3EVAAAAADLiAS9nb3RvP3VybD1DQUVTblFFQjZ6c3dGVnhwc0ZrOWVESnE3VjR4R3NjZXNLeGItQ1EzcWxvenFOaVBBOEt3R0J5ODN1bDRnZWtoUDNZQ3E5b0RqckJXMW10QjRGYU1jV1NoWUdYVk9zOU9PaEdqSXduZkVfZm8zX0o4dk1ZTDFQUTZNZjJrZGY1WUZpUVljejNfNnVBaVZPY3hUbkFmcTRsQ3U4djhhcVgwYm85c0lrRGZFNVhvZTgtMG1zZTk1c25jYUdyUU1hU0JVX05ERFF0QUliOHVkcmI4cWJQS2dTc246QkdlbmVyYWwgU29saWNpdGF0aW9uIG9mIEludmVzdG9ycyBmb3IgWW91ciBGaW5hbmNpbmc6IFJ1bGUgNTA2IC4uLkKbAVRoZSBKT0JTIEFjdCBkaXJlY3RlZCB0aGF0IFJ1bGUgNTA2IHNob3VsZCBpbmNsdWRlIGEgc2FmZSBoYXJib3IgcGVybWl0dGluZyBnZW5lcmFsIHNvbGljaXRhdGlvbiBzbyBsb25nIGFzIGFsbCB0aGUgaW52ZXN0b3JzIGFyZSAmcXVvdDthY2NyZWRpdGVkJm5ic3A7Li4uIgIQAUgAWABoAA",
+      "source": "Buchanan Ingersoll & Rooney PC",
+      "read_more_link": "https://www.bipc.com/general-solicitation-of-investors-for-your-financing-rule-506(c)-of-regulation-d#:~:text=The%20JOBS%20Act%20directed%20that,the%20investors%20are%20%22accredited%20investors."
+    },
+    {
+      "position": 3,
+      "title": "SEC Clarifies Accredited Investor Verification For Rule 506 ...",
+      "link": "https://www.legal500.com/intelligence/united-states/corporate-commercial-law/sec-clarifies-accredited-investor-verification-for-rule-506c-offerings",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=CAESzwEB6zswFZChQ4DGVehtVq3U6IWlE8Q2FeI7StcyJvC0f7iMAgliiEMvMJ3NQNqupvbYzvovQ6glvvPZzOAjYP6gZWmsU2zockc2O4bLHcHOfaIV7gYsrRpCbCC0YtgCaf_rY29RFT58jWrl4aofTH21r_kRAI8tnSeFsyVTDs2RurZHo-k-ai2z1L4rUe-j0DEbYkUnUS9lDo4pvbTeIffAkWYpS9xw42yfejK11Le0gyU_KhCwIEEewXVOztWLp1GQxbL9L-g1IzZqHIK5D8A&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8QFnoECCMQAQ&uoh=1",
+      "displayed_link": "https://www.legal500.com › corporate-commercial-law",
+      "favicon": "https://serpapi.com/images/i/UklGRugAAABXRUJQVlA4INwAAAAwBQCdASocABwAPtEutFooIagoGAEAGglAGM-03bOvb7YnimL04vSAGYLCU0Tj5neAAAD-9gJb5TN9rujwOLAb75k0KoPGQHn-exP5MmUest9ROGjfP4g9m_wYTQisPi6AH0JcATrV_jWmJEYw1GmMd9RzYN6EX79M9vinfYgUdgZWL0WbJ2Scx3b7X-_8f_98qc97IstceFfmTShqWLMUeA2aovzk0OET_0XyJLQbnB96f9osZcDP4cL53-KpX5kCkc19SSzl9fBcep2eIb0offhhWRB5LCVJAQAA.webp",
+      "snippet": "On March 12, 2025, the Securities and Exchange Commission (SEC) issued a no-action letter (No-Action Letter) to clarify the verification process for accredited ...",
+      "about_this_result": {
+        "source": {
+          "description": "On March 12, 2025, the Securities and Exchange Commission (SEC) issued a no-action letter (No-Action Letter) to clarify the verification process for accredited ...",
+          "source_info_link": "https://www.legal500.com/intelligence/united-states/corporate-commercial-law/sec-clarifies-accredited-investor-verification-for-rule-506c-offerings",
+          "icon": "https://serpapi.com/images/i/UklGRugAAABXRUJQVlA4INwAAAAwBQCdASocABwAPtEutFooIagoGAEAGglAGM-03bOvb7YnimL04vSAGYLCU0Tj5neAAAD-9gJb5TN9rujwOLAb75k0KoPGQHn-exP5MmUest9ROGjfP4g9m_wYTQisPi6AH0JcATrV_jWmJEYw1GmMd9RzYN6EX79M9vinfYgUdgZWL0WbJ2Scx3b7X-_8f_98qc97IstceFfmTShqWLMUeA2aovzk0OET_0XyJLQbnB96f9osZcDP4cL53-KpX5kCkc19SSzl9fBcep2eIb0offhhWRB5LCVJAQAA.webp"
+        },
+        "languages": [
+          "en"
+        ],
+        "regions": [
+          "US"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search/about-this-result?origin=www.google.com&req=CqECL2dvdG8_dXJsPUNBRVN6QUVCNnpzd0ZZdVpZVXVpVVMyR05NV3VsNUVOYkZ3emxoeTZxbWVtVTJpT3EtRkZIOEVnZ3BvUC1QVGl6S3h6Ty1leW1BTVIyVGFjV3l0RE1HRTNmc2paQU5wNzlyZmU2bGROWWxYMi1vU2R5MUJOOUlBUmZUWUc2SElwNXNFSTgwcHhxemlwNWpIZFc5UXcwQmp0dHhlMXFIZG1ab3ctMWtYeThEbVVrYkdJWlh2OHA2SFFqNHV3NE9qNWxQWURPOG1qMUVwRTB6cEJhYzlKckNwQktleVFONFYtVzVLVTZtWGxPbWxzQ0RDTGMtc2ZqVzRvQ3V4R3A3UFJ6Vjc2NVlOWmNDd2VqNlZ5VWREUHVJYxIEGgIIABr-BBIAGgAiACoAMgYIAxICdXM6AEIECAEQAEoAWgByAHoAgkDaBAgAEAAYACAAKgwKBXp6cXg3FQAAAAAqCQoCbm8V5N7APioLCgRzdWNoFchv6T0qCwoEdGVybRUAAAAAKgsKBDh2a3EVAAAAADKhAi9nb3RvP3VybD1DQUVTekFFQjZ6c3dGWXVaWVV1aVVTMkdOTVd1bDVFTmJGd3psaHk2cW1lbVUyaU9xLUZGSDhFZ2dwb1AtUFRpekt4ek8tZXltQU1SMlRhY1d5dERNR0UzZnNqWkFOcDc5cmZlNmxkTllsWDItb1NkeTFCTjlJQVJmVFlHNkhJcDVzRUk4MHB4cXppcDVqSGRXOVF3MEJqdHR4ZTFxSGRtWm93LTFrWHk4RG1Va2JHSVpYdjhwNkhRajR1dzRPajVsUFlETzhtajFFcEUwenBCYWM5SnJDcEJLZXlRTjRWLVc1S1U2bVhsT21sc0NEQ0xjLXNmalc0b0N1eEdwN1BSelY3NjVZTlpjQ3dlajZWeVVkRFB1SWM6QVNFQyBDbGFyaWZpZXMgQWNjcmVkaXRlZCBJbnZlc3RvciBWZXJpZmljYXRpb24gRm9yIFJ1bGUgNTA2KGMgLi4uQqgBT24gTWFyY2ggMTIsIDIwMjUsIHRoZSBTZWN1cml0aWVzIGFuZCBFeGNoYW5nZSBDb21taXNzaW9uIChTRUMpIGlzc3VlZCBhIG5vLWFjdGlvbiBsZXR0ZXIgKE5vLUFjdGlvbiBMZXR0ZXIpIHRvIGNsYXJpZnkgdGhlIHZlcmlmaWNhdGlvbiBwcm9jZXNzIGZvciBhY2NyZWRpdGVkJm5ic3A7Li4uIgIQAUgAWABoAA",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&req_token=CqECL2dvdG8_dXJsPUNBRVN6QUVCNnpzd0ZZdVpZVXVpVVMyR05NV3VsNUVOYkZ3emxoeTZxbWVtVTJpT3EtRkZIOEVnZ3BvUC1QVGl6S3h6Ty1leW1BTVIyVGFjV3l0RE1HRTNmc2paQU5wNzlyZmU2bGROWWxYMi1vU2R5MUJOOUlBUmZUWUc2SElwNXNFSTgwcHhxemlwNWpIZFc5UXcwQmp0dHhlMXFIZG1ab3ctMWtYeThEbVVrYkdJWlh2OHA2SFFqNHV3NE9qNWxQWURPOG1qMUVwRTB6cEJhYzlKckNwQktleVFONFYtVzVLVTZtWGxPbWxzQ0RDTGMtc2ZqVzRvQ3V4R3A3UFJ6Vjc2NVlOWmNDd2VqNlZ5VWREUHVJYxIEGgIIABr-BBIAGgAiACoAMgYIAxICdXM6AEIECAEQAEoAWgByAHoAgkDaBAgAEAAYACAAKgwKBXp6cXg3FQAAAAAqCQoCbm8V5N7APioLCgRzdWNoFchv6T0qCwoEdGVybRUAAAAAKgsKBDh2a3EVAAAAADKhAi9nb3RvP3VybD1DQUVTekFFQjZ6c3dGWXVaWVV1aVVTMkdOTVd1bDVFTmJGd3psaHk2cW1lbVUyaU9xLUZGSDhFZ2dwb1AtUFRpekt4ek8tZXltQU1SMlRhY1d5dERNR0UzZnNqWkFOcDc5cmZlNmxkTllsWDItb1NkeTFCTjlJQVJmVFlHNkhJcDVzRUk4MHB4cXppcDVqSGRXOVF3MEJqdHR4ZTFxSGRtWm93LTFrWHk4RG1Va2JHSVpYdjhwNkhRajR1dzRPajVsUFlETzhtajFFcEUwenBCYWM5SnJDcEJLZXlRTjRWLVc1S1U2bVhsT21sc0NEQ0xjLXNmalc0b0N1eEdwN1BSelY3NjVZTlpjQ3dlajZWeVVkRFB1SWM6QVNFQyBDbGFyaWZpZXMgQWNjcmVkaXRlZCBJbnZlc3RvciBWZXJpZmljYXRpb24gRm9yIFJ1bGUgNTA2KGMgLi4uQqgBT24gTWFyY2ggMTIsIDIwMjUsIHRoZSBTZWN1cml0aWVzIGFuZCBFeGNoYW5nZSBDb21taXNzaW9uIChTRUMpIGlzc3VlZCBhIG5vLWFjdGlvbiBsZXR0ZXIgKE5vLUFjdGlvbiBMZXR0ZXIpIHRvIGNsYXJpZnkgdGhlIHZlcmlmaWNhdGlvbiBwcm9jZXNzIGZvciBhY2NyZWRpdGVkJm5ic3A7Li4uIgIQAUgAWABoAA",
+      "source": "Legal 500",
+      "read_more_link": "https://www.legal500.com/intelligence/united-states/corporate-commercial-law/sec-clarifies-accredited-investor-verification-for-rule-506c-offerings#:~:text=On%20March%2012%2C%202025%2C%20the,accredited%20investors%20under%20Rule%20506(c)."
+    }
+  ],
+  "pagination": {
+    "current": 1,
+    "next": "https://www.google.com/search?q=site:jobs.lever.co+%22zzqx7-no-such-term-8vkq%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnt9LkV1gilaUrADO32138rCgHHcXQ:1792494868734&ei=FE3XapG3LJe_gLQP0fjT-Ac&start=10&sa=N&sstk=AS6-VmIo0rg0DVWiq-wPa-_q4julMxZ7xFRuHJMgAt03b4eoAWAOfEH0tSEyDdm_N-70yvsLydBUSF7s42-jX3lPCA-dMiHvoYhDoA&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8Q8NMDegQIIBAS",
+    "other_pages": {
+      "2": "https://www.google.com/search?q=site:jobs.lever.co+%22zzqx7-no-such-term-8vkq%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnt9LkV1gilaUrADO32138rCgHHcXQ:1792494868734&ei=FE3XapG3LJe_gLQP0fjT-Ac&start=10&sa=N&sstk=AS6-VmIo0rg0DVWiq-wPa-_q4julMxZ7xFRuHJMgAt03b4eoAWAOfEH0tSEyDdm_N-70yvsLydBUSF7s42-jX3lPCA-dMiHvoYhDoA&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8Q8tMDegQIIBAE",
+      "3": "https://www.google.com/search?q=site:jobs.lever.co+%22zzqx7-no-such-term-8vkq%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnt9LkV1gilaUrADO32138rCgHHcXQ:1792494868734&ei=FE3XapG3LJe_gLQP0fjT-Ac&start=20&sa=N&sstk=AS6-VmIo0rg0DVWiq-wPa-_q4julMxZ7xFRuHJMgAt03b4eoAWAOfEH0tSEyDdm_N-70yvsLydBUSF7s42-jX3lPCA-dMiHvoYhDoA&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8Q8tMDegQIIBAG",
+      "4": "https://www.google.com/search?q=site:jobs.lever.co+%22zzqx7-no-such-term-8vkq%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnt9LkV1gilaUrADO32138rCgHHcXQ:1792494868734&ei=FE3XapG3LJe_gLQP0fjT-Ac&start=30&sa=N&sstk=AS6-VmIo0rg0DVWiq-wPa-_q4julMxZ7xFRuHJMgAt03b4eoAWAOfEH0tSEyDdm_N-70yvsLydBUSF7s42-jX3lPCA-dMiHvoYhDoA&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8Q8tMDegQIIBAI",
+      "5": "https://www.google.com/search?q=site:jobs.lever.co+%22zzqx7-no-such-term-8vkq%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnt9LkV1gilaUrADO32138rCgHHcXQ:1792494868734&ei=FE3XapG3LJe_gLQP0fjT-Ac&start=40&sa=N&sstk=AS6-VmIo0rg0DVWiq-wPa-_q4julMxZ7xFRuHJMgAt03b4eoAWAOfEH0tSEyDdm_N-70yvsLydBUSF7s42-jX3lPCA-dMiHvoYhDoA&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8Q8tMDegQIIBAK",
+      "6": "https://www.google.com/search?q=site:jobs.lever.co+%22zzqx7-no-such-term-8vkq%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnt9LkV1gilaUrADO32138rCgHHcXQ:1792494868734&ei=FE3XapG3LJe_gLQP0fjT-Ac&start=50&sa=N&sstk=AS6-VmIo0rg0DVWiq-wPa-_q4julMxZ7xFRuHJMgAt03b4eoAWAOfEH0tSEyDdm_N-70yvsLydBUSF7s42-jX3lPCA-dMiHvoYhDoA&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8Q8tMDegQIIBAM",
+      "7": "https://www.google.com/search?q=site:jobs.lever.co+%22zzqx7-no-such-term-8vkq%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnt9LkV1gilaUrADO32138rCgHHcXQ:1792494868734&ei=FE3XapG3LJe_gLQP0fjT-Ac&start=60&sa=N&sstk=AS6-VmIo0rg0DVWiq-wPa-_q4julMxZ7xFRuHJMgAt03b4eoAWAOfEH0tSEyDdm_N-70yvsLydBUSF7s42-jX3lPCA-dMiHvoYhDoA&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8Q8tMDegQIIBAO",
+      "8": "https://www.google.com/search?q=site:jobs.lever.co+%22zzqx7-no-such-term-8vkq%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnt9LkV1gilaUrADO32138rCgHHcXQ:1792494868734&ei=FE3XapG3LJe_gLQP0fjT-Ac&start=70&sa=N&sstk=AS6-VmIo0rg0DVWiq-wPa-_q4julMxZ7xFRuHJMgAt03b4eoAWAOfEH0tSEyDdm_N-70yvsLydBUSF7s42-jX3lPCA-dMiHvoYhDoA&ved=2ahUKEwiRkabfu8iXAxWXH4AAHVH8FH8Q8tMDegQIIBAQ"
+    }
+  },
+  "serpapi_pagination": {
+    "current": 1,
+    "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&start=10",
+    "next": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&start=10",
+    "other_pages": {
+      "2": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&start=10",
+      "3": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&start=20",
+      "4": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&start=30",
+      "5": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&start=40",
+      "6": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&start=50",
+      "7": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&start=60",
+      "8": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22zzqx7-no-such-term-8vkq%22&start=70"
+    }
+  }
+}

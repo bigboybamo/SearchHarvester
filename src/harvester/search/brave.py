@@ -1,7 +1,9 @@
 """Brave Search API (web search). The default provider.
 
-Response shape and limits are from Brave's documentation (2026-10-19) and have **not yet been
-verified against a live call**; `tests/fixtures/brave_web_search.json` is hand-written to match.
+Verified against live calls on 2026-10-20; the fixtures in `tests/fixtures/brave_*.json` are
+trimmed captures. Observed: titles and descriptions are plain text (no `<strong>` highlighting
+or HTML entities, despite the docs), a query with no matches omits `web` entirely, and an
+invalid token is HTTP 422 `SUBSCRIPTION_TOKEN_INVALID`, not 401.
 """
 
 import logging
@@ -10,8 +12,7 @@ import httpx
 from pydantic import BaseModel, ConfigDict, ValidationError
 
 from harvester.models import SearchHit
-from harvester.search.base import SearchError, get_search_json, validate_request
-from harvester.text import html_to_text
+from harvester.search.base import SearchError, clean_text, get_search_json, validate_request
 
 logger = logging.getLogger(__name__)
 
@@ -79,10 +80,9 @@ class BraveProvider:
                 SearchHit(
                     provider=NAME,
                     rank=page * PAGE_SIZE + index + 1,
-                    # Brave wraps matched terms in <strong> and escapes entities.
-                    title=html_to_text(result.title),
+                    title=clean_text(result.title),
                     url=result.url,
-                    snippet=html_to_text(result.description),
+                    snippet=clean_text(result.description),
                 )
             )
         return hits
