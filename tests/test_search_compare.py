@@ -1,8 +1,12 @@
+import logging
+from collections.abc import Iterator
 from pathlib import Path
 
 import httpx
 import pytest
+import respx
 
+from conftest import load_fixture
 from harvester import config
 from harvester.ats.registry import AtsRegistry, default_registry
 from harvester.models import SearchHit
@@ -11,10 +15,12 @@ from harvester.search.base import SearchError
 from harvester.search.compare import (
     ProviderRun,
     QueryComparison,
+    is_on_site,
     planned_searches,
     read_queries,
     render_report,
     run_provider,
+    site_domains,
 )
 
 
@@ -118,6 +124,38 @@ def test_run_provider_ats_host_without_slug_counts_as_ats_hit_only(
     assert run.boards == set()
 
 
+@pytest.mark.parametrize(
+    ("url", "on_site"),
+    [
+        ("https://jobs.lever.co/acme/1", True),
+        ("https://acme.wd3.myworkdayjobs.com/x", True),
+        ("https://career2.successfactors.eu/career?company=x", True),
+        ("https://www.legal500.com/article", False),
+        ("https://notmyworkdayjobs.com/x", False),
+    ],
+)
+def test_is_on_site_matches_hosts_and_subdomains(url: str, on_site: bool) -> None:
+    domains = ["jobs.lever.co", "myworkdayjobs.com", "successfactors.eu"]
+
+    assert is_on_site(url, domains) is on_site
+
+
+def test_site_domains_reads_every_site_operator() -> None:
+    query = "( site:Jobs.Lever.co OR site:myworkdayjobs.com) (Python) -site:example.org"
+
+    assert site_domains(query) == ["jobs.lever.co", "myworkdayjobs.com", "example.org"]
+
+
+def test_run_provider_counts_off_site_hits(registry: AtsRegistry) -> None:
+    # Seen live with SerpApi: a no-match site: query returned unrelated pages.
+    provider = FakeProvider("a", [[LEVER_ACME, "https://www.legal500.com/x"]])
+
+    run = run_provider(provider, "(site:jobs.lever.co) (Python)", pages=1, registry=registry)
+
+    assert run.off_site_hits == 1
+    assert run.boards == {("Lever", "acme")}
+
+
 # --- render_report -----------------------------------------------------------------------------
 
 
@@ -133,8 +171,8 @@ def test_render_report_summary_and_overlap() -> None:
     report = render_report([_comparison('(site:jobs.lever.co) ("Go")', brave, serp)])
 
     assert report.startswith("# Search provider comparison\n")
-    assert "| brave | 1 | 0 | 2 | 2 | 2.00 | 0 of 1 |" in report
-    assert "| serpapi | 2 | 0 | 3 | 2 | 1.00 | 0 of 1 |" in report
+    assert "| brave | 1 | 0 | 0 | 2 | 2 | 2.00 | 0 of 1 |" in report
+    assert "| serpapi | 2 | 0 | 0 | 3 | 2 | 1.00 | 0 of 1 |" in report
     assert '27 characters, 2 words\n\n```\n(site:jobs.lever.co) ("Go")\n```' in report
     assert "Boards found by both: 1" in report
     assert "Only brave: 1: Ashby/g" in report
@@ -148,7 +186,7 @@ def test_render_report_error_shown_and_counted() -> None:
     report = render_report([_comparison("q", failed, ok)])
 
     assert r"| brave returned HTTP 422 \| detail |" in report
-    assert "| brave | 1 | 0 | 0 | 0 | 0.00 | 1 of 1 |" in report
+    assert "| brave | 1 | 0 | 0 | 0 | 0 | 0.00 | 1 of 1 |" in report
 
 
 def test_render_report_many_unique_boards_truncated() -> None:
@@ -217,3 +255,40 @@ def test_main_empty_queries_file_exits_2(tmp_path: Path) -> None:
     path.write_text("# nothing yet\n", encoding="utf-8")
 
     assert compare.main([str(path)]) == 2
+
+
+@pytest.fixture
+def default_httpx_logging() -> Iterator[None]:
+    """Undo any earlier `configure_cli_logging`, so the test sees httpx's own INFO logging."""
+    loggers = [logging.getLogger(name) for name in ("httpx", "httpcore")]
+    saved = [logger.level for logger in loggers]
+    for logger in loggers:
+        logger.setLevel(logging.NOTSET)
+    yield
+    for logger, level in zip(loggers, saved, strict=True):
+        logger.setLevel(level)
+
+
+def test_main_real_serpapi_key_never_logged(
+    queries_file: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    respx_mock: respx.MockRouter,
+    caplog: pytest.LogCaptureFixture,
+    capsys: pytest.CaptureFixture[str],
+    default_httpx_logging: None,
+) -> None:
+    # Regression: httpx logs every request URL at INFO, and SerpApi's key is in the query string.
+    key = "serpapi-key-that-must-not-leak"
+    monkeypatch.setenv("SERPAPI_API_KEY", key)
+    respx_mock.get("https://serpapi.com/search").respond(
+        200, content=load_fixture("serpapi_google.json")
+    )
+
+    with caplog.at_level(logging.DEBUG):
+        code = compare.main([str(queries_file), "--providers", "serpapi"])
+
+    captured = capsys.readouterr()
+    assert code == 0
+    assert respx_mock.calls.call_count == 2
+    assert key not in caplog.text
+    assert key not in captured.out + captured.err

@@ -19,6 +19,17 @@ RETRY_STATUSES = frozenset({429, 500, 502, 503, 504})
 MAX_RETRY_AFTER_SECONDS = 60.0
 
 
+def configure_cli_logging(level: int = logging.INFO) -> None:
+    """Logging for the command-line tools. Every entry point must use this, not `basicConfig`.
+
+    httpx logs each request's full URL, query string included, at INFO. SerpApi takes its key
+    as a query parameter, so those loggers are held at WARNING to keep secrets out of logs.
+    """
+    logging.basicConfig(level=level, format="%(levelname)s %(name)s: %(message)s")
+    for name in ("httpx", "httpcore"):
+        logging.getLogger(name).setLevel(logging.WARNING)
+
+
 def create_client(
     *, follow_redirects: bool = True, headers: Mapping[str, str] | None = None
 ) -> httpx.Client:

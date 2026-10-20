@@ -14,14 +14,16 @@ starting with `#` are ignored. The total number of paid searches is checked agai
 
 import argparse
 import logging
+import re
 import sys
 from collections.abc import Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from harvester.ats.registry import AtsRegistry, default_registry
 from harvester.config import ConfigError, load_settings
-from harvester.httpclient import create_client
+from harvester.httpclient import configure_cli_logging, create_client
 from harvester.models import SearchHit
 from harvester.search.base import SearchError, SearchProvider
 from harvester.search.factory import create_provider
@@ -35,6 +37,8 @@ MAX_LISTED_BOARDS = 10
 Board = tuple[str, str]
 """(ATS name, company slug)."""
 
+_SITE_TERM = re.compile(r"site:([^\s()]+)", re.IGNORECASE)
+
 
 @dataclass
 class ProviderRun:
@@ -44,6 +48,9 @@ class ProviderRun:
     boards: set[Board] = field(default_factory=set)
     ats_hits: int = 0
     """Hits on a supported ATS host, whether or not a slug could be read from them."""
+
+    off_site_hits: int = 0
+    """Hits on none of the query's `site:` domains, i.e. the provider ignored the restriction."""
 
     error: str | None = None
 
@@ -71,6 +78,17 @@ def read_queries(path: Path) -> list[str]:
     return [line.strip() for line in lines if line.strip() and not line.lstrip().startswith("#")]
 
 
+def site_domains(query: str) -> list[str]:
+    """The domains named by `site:` operators in `query`, lower-cased."""
+    return [domain.lower().rstrip("/") for domain in _SITE_TERM.findall(query)]
+
+
+def is_on_site(url: str, domains: Sequence[str]) -> bool:
+    """True if `url`'s host is one of `domains` or a subdomain of one, as `site:` matches."""
+    host = (urlsplit(url).hostname or "").lower()
+    return any(host == d or host.endswith(f".{d}") for d in domains)
+
+
 def planned_searches(
     queries: Sequence[str], providers: Sequence[SearchProvider], pages: int
 ) -> int:
@@ -94,7 +112,10 @@ def run_provider(
         if len(hits) < provider.page_size:
             break
 
+    domains = site_domains(query)
     for hit in run.hits:
+        if domains and not is_on_site(hit.url, domains):
+            run.off_site_hits += 1
         resolved = registry.resolve(hit.url)
         if registry.client_for(hit.url) is not None:
             run.ats_hits += 1
@@ -147,32 +168,36 @@ def _summary(comparisons: Sequence[QueryComparison]) -> list[str]:
             total.searches += run.searches
             total.hits += run.hits
             total.ats_hits += run.ats_hits
+            total.off_site_hits += run.off_site_hits
             total.boards |= run.boards
             failures[run.provider] = failures.get(run.provider, 0) + (run.error is not None)
     rows = [
-        f"| {name} | {total.searches} | {len(total.hits)} | {total.ats_hits} | {len(total.boards)} "
-        f"| {total.boards_per_search:.2f} | {failures[name]} of {len(comparisons)} |"
+        f"| {name} | {total.searches} | {len(total.hits)} | {total.off_site_hits} "
+        f"| {total.ats_hits} | {len(total.boards)} | {total.boards_per_search:.2f} "
+        f"| {failures[name]} of {len(comparisons)} |"
         for name, total in totals.items()
     ]
     return [
         f"Across {len(comparisons)} queries (distinct boards counted once overall):",
         "",
-        "| Provider | Searches | Hits | ATS hits | Distinct boards | Boards per search "
-        "| Queries failed |",
-        "|---|---|---|---|---|---|---|",
+        "| Provider | Searches | Hits | Off-site hits | ATS hits | Distinct boards "
+        "| Boards per search | Queries failed |",
+        "|---|---|---|---|---|---|---|---|",
         *rows,
     ]
 
 
 def _run_table(runs: Sequence[ProviderRun]) -> list[str]:
     rows = [
-        f"| {run.provider} | {run.searches} | {len(run.hits)} | {run.ats_hits} | {len(run.boards)} "
-        f"| {run.boards_per_search:.2f} | {_cell(run.error or '')} |"
+        f"| {run.provider} | {run.searches} | {len(run.hits)} | {run.off_site_hits} "
+        f"| {run.ats_hits} | {len(run.boards)} | {run.boards_per_search:.2f} "
+        f"| {_cell(run.error or '')} |"
         for run in runs
     ]
     return [
-        "| Provider | Searches | Hits | ATS hits | Boards | Boards per search | Error |",
-        "|---|---|---|---|---|---|---|",
+        "| Provider | Searches | Hits | Off-site hits | ATS hits | Boards | Boards per search "
+        "| Error |",
+        "|---|---|---|---|---|---|---|---|",
         *rows,
     ]
 
@@ -218,7 +243,7 @@ def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+    configure_cli_logging()
     args = _parse_args(argv)
     try:
         queries = read_queries(args.queries)
