@@ -1,0 +1,207 @@
+{
+  "search_metadata": {
+    "id": "6ad74d12b13aa7564ff84349",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/5PzEWVYeykbAjhsXbHS43V_BBgNmRK0CqDljdwEEXnM/6ad74d12b13aa7564ff84349.json",
+    "markdown_endpoint": "https://serpapi.com/searches/5PzEWVYeykbAjhsXbHS43V_BBgNmRK0CqDljdwEEXnM/6ad74d12b13aa7564ff84349.md",
+    "pixel_position_endpoint": "https://serpapi.com/searches/5PzEWVYeykbAjhsXbHS43V_BBgNmRK0CqDljdwEEXnM/6ad74d12b13aa7564ff84349.json_with_pixel_position",
+    "created_at": "2026-10-20 11:14:26 UTC",
+    "processed_at": "2026-10-20 11:14:26 UTC",
+    "google_url": "https://www.google.com/search?q=site%3Ajobs.lever.co+%22python%22&oq=site%3Ajobs.lever.co+%22python%22&sourceid=chrome&ie=UTF-8",
+    "raw_html_file": "https://serpapi.com/searches/5PzEWVYeykbAjhsXbHS43V_BBgNmRK0CqDljdwEEXnM/6ad74d12b13aa7564ff84349.html",
+    "total_time_taken": 1.71
+  },
+  "search_parameters": {
+    "engine": "google",
+    "q": "site:jobs.lever.co \"python\"",
+    "google_domain": "google.com",
+    "start": 0,
+    "device": "desktop"
+  },
+  "search_information": {
+    "query_displayed": "site:jobs.lever.co \"python\"",
+    "total_results": 6540,
+    "time_taken_displayed": 0.33,
+    "organic_results_state": "Results for exact spelling"
+  },
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "Django/Python Web Developer - National Journal",
+      "link": "https://jobs.lever.co/nationaljournal/b3f4c087-bc7a-4d8c-80a8-dc481b8d0a48",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=CAEShQEB6zswFQAYv3CCUhj2jYXQlAABu6wc9F12GinvtHatnyaRlKjgi738jhshtPRiiCBUJmw_hhMMR0M9WfCDWt5wGUqTrm2LcQb0QBEaa96JWo91uxgdde-fhC3VDT4JodGuLlaY_FGQHb0vjBX-yRSSNscZIok1t8ATSwiUkQD2_D8pBQFn&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQFnoECB0QAQ&uoh=1",
+      "displayed_link": "https://jobs.lever.co › nationaljournal",
+      "favicon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp",
+      "snippet": "You are an experienced web developer: You have at least 1 year of web development experience in a professional setting using Python (preferably with Django).",
+      "snippet_highlighted_words": [
+        "Python"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "You are an experienced web developer: You have at least 1 year of web development experience in a professional setting using Python (preferably with Django).",
+          "source_info_link": "https://jobs.lever.co/nationaljournal/b3f4c087-bc7a-4d8c-80a8-dc481b8d0a48",
+          "icon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp"
+        },
+        "languages": [
+          "en"
+        ],
+        "regions": [
+          "US"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search/about-this-result?origin=www.google.com&req=CsIBL2dvdG8_dXJsPUNBRVNoUUVCNnpzd0ZkU3hPT3NTSW1zeHhlT2JKSXItOGtsWkVBcTMtYmpyRWp6V3BLN09xZ0xKdE8zaUcxejgwa1N2cGY5ZjNPbndCWkhWV1RGQlVCSVhiTHNCM3pZM0s4bnFtSWdVOElRZVFveVBGRHUwcEhuMTd0WlBqWHMtSkhZbjl4c21NN1puUDlza01uS3FvSVYteVlUQUtVOTJUSVJ0UVlWeWh5ZTVYUURhMjdIeGVDWGISBBoCCAAa-QMSAggAGgAiACoAMgYIAxICdXM6AEIECAEQAEoAWhEIARINam9icy5sZXZlci5jb3IAegCCQMIDCAAQABgAIAAqDQoGcHl0aG9uFX0wgEAywgEvZ290bz91cmw9Q0FFU2hRRUI2enN3RmRTeE9Pc1NJbXN4eGVPYkpJci04a2xaRUFxMy1ianJFanpXcEs3T3FnTEp0TzNpRzF6ODBrU3ZwZjlmM09ud0JaSFZXVEZCVUJJWGJMc0IzelkzSzhucW1JZ1U4SVFlUW95UEZEdTBwSG4xN3RaUGpYcy1KSFluOXhzbU03Wm5QOXNrTW5LcW9JVi15WVRBS1U5MlRJUnRRWVZ5aHllNVhRRGEyN0h4ZUNYYjo9RGphbmdvLzxiPlB5dGhvbjwvYj4gV2ViIERldmVsb3BlciAtIE5hdGlvbmFsIEpvdXJuYWwgLSBMZXZlckKkAVlvdSBhcmUgYW4gZXhwZXJpZW5jZWQgd2ViIGRldmVsb3BlcjogWW91IGhhdmUgYXQgbGVhc3QgMSB5ZWFyIG9mIHdlYiBkZXZlbG9wbWVudCBleHBlcmllbmNlIGluIGEgcHJvZmVzc2lvbmFsIHNldHRpbmcgdXNpbmcgPGI-UHl0aG9uPC9iPiAocHJlZmVyYWJseSB3aXRoIERqYW5nbykuIgIQAUgAWABoAA",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&req_token=CsIBL2dvdG8_dXJsPUNBRVNoUUVCNnpzd0ZkU3hPT3NTSW1zeHhlT2JKSXItOGtsWkVBcTMtYmpyRWp6V3BLN09xZ0xKdE8zaUcxejgwa1N2cGY5ZjNPbndCWkhWV1RGQlVCSVhiTHNCM3pZM0s4bnFtSWdVOElRZVFveVBGRHUwcEhuMTd0WlBqWHMtSkhZbjl4c21NN1puUDlza01uS3FvSVYteVlUQUtVOTJUSVJ0UVlWeWh5ZTVYUURhMjdIeGVDWGISBBoCCAAa-QMSAggAGgAiACoAMgYIAxICdXM6AEIECAEQAEoAWhEIARINam9icy5sZXZlci5jb3IAegCCQMIDCAAQABgAIAAqDQoGcHl0aG9uFX0wgEAywgEvZ290bz91cmw9Q0FFU2hRRUI2enN3RmRTeE9Pc1NJbXN4eGVPYkpJci04a2xaRUFxMy1ianJFanpXcEs3T3FnTEp0TzNpRzF6ODBrU3ZwZjlmM09ud0JaSFZXVEZCVUJJWGJMc0IzelkzSzhucW1JZ1U4SVFlUW95UEZEdTBwSG4xN3RaUGpYcy1KSFluOXhzbU03Wm5QOXNrTW5LcW9JVi15WVRBS1U5MlRJUnRRWVZ5aHllNVhRRGEyN0h4ZUNYYjo9RGphbmdvLzxiPlB5dGhvbjwvYj4gV2ViIERldmVsb3BlciAtIE5hdGlvbmFsIEpvdXJuYWwgLSBMZXZlckKkAVlvdSBhcmUgYW4gZXhwZXJpZW5jZWQgd2ViIGRldmVsb3BlcjogWW91IGhhdmUgYXQgbGVhc3QgMSB5ZWFyIG9mIHdlYiBkZXZlbG9wbWVudCBleHBlcmllbmNlIGluIGEgcHJvZmVzc2lvbmFsIHNldHRpbmcgdXNpbmcgPGI-UHl0aG9uPC9iPiAocHJlZmVyYWJseSB3aXRoIERqYW5nbykuIgIQAUgAWABoAA",
+      "source": "Lever",
+      "read_more_link": "https://jobs.lever.co/nationaljournal/b3f4c087-bc7a-4d8c-80a8-dc481b8d0a48#:~:text=You%20are%20an%20experienced%20web,using%20Python%20(preferably%20with%20Django)."
+    },
+    {
+      "position": 2,
+      "title": "Artera - Senior/Staff/Principal Software Engineer - Python",
+      "link": "https://jobs.lever.co/artera/cc5cbc4d-c7e7-4573-993f-526cb33f5a81",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=CAESfAHrOzAVwsqcWkQXms6maBFvyguca4AZh6jihGbu5QrZ-qAxLGeCOtvjxe93udWiU1UiLinzNlruuwb_vreG0ansK7fmzeP3dKQkIw1Pp3WrMPMki-f2d0cZFGGvIaGcKCafxlZRGlydzq00IPmybiTx9ZY9X69p8Hj5gzg&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQFnoECBoQAQ&uoh=1",
+      "displayed_link": "https://jobs.lever.co › artera",
+      "favicon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp",
+      "snippet": "Use AI Code-gen and other AI‐assisted development tools to accelerate delivery, generating, reviewing, and refactoring Python code. Experience Requirements ...",
+      "snippet_highlighted_words": [
+        "Python"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "Use AI Code-gen and other AI‐assisted development tools to accelerate delivery, generating, reviewing, and refactoring Python code. Experience Requirements ...",
+          "source_info_link": "https://jobs.lever.co/artera/cc5cbc4d-c7e7-4573-993f-526cb33f5a81",
+          "icon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp"
+        },
+        "languages": [
+          "en"
+        ],
+        "regions": [
+          "US"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search/about-this-result?origin=www.google.com&req=CrUBL2dvdG8_dXJsPUNBRVNmQUhyT3pBVnJFckYzbEd5R3hlNVMzYUM1T0tMY0N3dnNWZjhCUmZfRnIzTFhmeC1hUjJ6eVJnRUxMM18tRmc3VFp2eGhma2Z4bnBRWVB4c0ZEWHBpX2d0bW4xZjdIZ2ZMc1ZjQm5FYmhDOWpfeEN4bTBmUGJBX1pTMXhWaG1LR0NBcVpNTDFzXzB6VTJxR2RsdXR1RnhVaHVHZWlRVk0ydG1naUZUdxIEGgIIABqBBBICCAAaACIAKgAyBggDEgJ1czoAQgQIARAASgBaEQgBEg1qb2JzLmxldmVyLmNvcgB6AIJAygMIABAAGAAgACoNCgZweXRob24V7o1tQDK1AS9nb3RvP3VybD1DQUVTZkFIck96QVZyRXJGM2xHeUd4ZTVTM2FDNU9LTGNDd3ZzVmY4QlJmX0ZyM0xYZngtYVIyenlSZ0VMTDNfLUZnN1RadnhoZmtmeG5wUVlQeHNGRFhwaV9ndG1uMWY3SGdmTHNWY0JuRWJoQzlqX3hDeG0wZlBiQV9aUzF4VmhtS0dDQXFaTUwxc18welUycUdkbHV0dUZ4VWh1R2VpUVZNMnRtZ2lGVHc6SUFydGVyYSAtIFNlbmlvci9TdGFmZi9QcmluY2lwYWwgU29mdHdhcmUgRW5naW5lZXIgLSA8Yj5QeXRob248L2I-IC0gTGV2ZXJCrQFVc2UgQUkgQ29kZS1nZW4gYW5kIG90aGVyIEFJ4oCQYXNzaXN0ZWQgZGV2ZWxvcG1lbnQgdG9vbHMgdG8gYWNjZWxlcmF0ZSBkZWxpdmVyeSwgZ2VuZXJhdGluZywgcmV2aWV3aW5nLCBhbmQgcmVmYWN0b3JpbmcgPGI-UHl0aG9uPC9iPiBjb2RlLiBFeHBlcmllbmNlIFJlcXVpcmVtZW50cyZuYnNwOy4uLiICEAFIAFgAaAA",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&req_token=CrUBL2dvdG8_dXJsPUNBRVNmQUhyT3pBVnJFckYzbEd5R3hlNVMzYUM1T0tMY0N3dnNWZjhCUmZfRnIzTFhmeC1hUjJ6eVJnRUxMM18tRmc3VFp2eGhma2Z4bnBRWVB4c0ZEWHBpX2d0bW4xZjdIZ2ZMc1ZjQm5FYmhDOWpfeEN4bTBmUGJBX1pTMXhWaG1LR0NBcVpNTDFzXzB6VTJxR2RsdXR1RnhVaHVHZWlRVk0ydG1naUZUdxIEGgIIABqBBBICCAAaACIAKgAyBggDEgJ1czoAQgQIARAASgBaEQgBEg1qb2JzLmxldmVyLmNvcgB6AIJAygMIABAAGAAgACoNCgZweXRob24V7o1tQDK1AS9nb3RvP3VybD1DQUVTZkFIck96QVZyRXJGM2xHeUd4ZTVTM2FDNU9LTGNDd3ZzVmY4QlJmX0ZyM0xYZngtYVIyenlSZ0VMTDNfLUZnN1RadnhoZmtmeG5wUVlQeHNGRFhwaV9ndG1uMWY3SGdmTHNWY0JuRWJoQzlqX3hDeG0wZlBiQV9aUzF4VmhtS0dDQXFaTUwxc18welUycUdkbHV0dUZ4VWh1R2VpUVZNMnRtZ2lGVHc6SUFydGVyYSAtIFNlbmlvci9TdGFmZi9QcmluY2lwYWwgU29mdHdhcmUgRW5naW5lZXIgLSA8Yj5QeXRob248L2I-IC0gTGV2ZXJCrQFVc2UgQUkgQ29kZS1nZW4gYW5kIG90aGVyIEFJ4oCQYXNzaXN0ZWQgZGV2ZWxvcG1lbnQgdG9vbHMgdG8gYWNjZWxlcmF0ZSBkZWxpdmVyeSwgZ2VuZXJhdGluZywgcmV2aWV3aW5nLCBhbmQgcmVmYWN0b3JpbmcgPGI-UHl0aG9uPC9iPiBjb2RlLiBFeHBlcmllbmNlIFJlcXVpcmVtZW50cyZuYnNwOy4uLiICEAFIAFgAaAA",
+      "source": "Lever",
+      "read_more_link": "https://jobs.lever.co/artera/cc5cbc4d-c7e7-4573-993f-526cb33f5a81#:~:text=Use%20AI%20Code%2Dgen%20and%20other,Experience%20Requirements%3A"
+    },
+    {
+      "position": 3,
+      "title": "Senior Application Engineer (Python/JavaScript/Typescript)",
+      "link": "https://jobs.lever.co/egen/53b29838-b330-4e27-a4f5-798a82822b4a",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=CAESegHrOzAVu9SzULwHXR8OgwJEF-6-QzxJB_KkdyXbSXH357cdfiLhbVUj7bPQoCkku5Krn608n3halybG19BzpzaebgihMPh4xGmIRtqK5YSonxMIJAdIsJWBdROix8NfA49-Q1FNl6S-WPfxaZZDpByzDh39J-sVa0zY&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQFnoECCQQAQ&uoh=1",
+      "displayed_link": "https://jobs.lever.co › egen",
+      "favicon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp",
+      "snippet": "Basic Qualifications: 4+ years of professional software development experience with full-stack applications; Strong proficiency in Python; Experience building ...",
+      "snippet_highlighted_words": [
+        "Python"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "Basic Qualifications: 4+ years of professional software development experience with full-stack applications; Strong proficiency in Python; Experience building ...",
+          "source_info_link": "https://jobs.lever.co/egen/53b29838-b330-4e27-a4f5-798a82822b4a",
+          "icon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp"
+        },
+        "languages": [
+          "en"
+        ],
+        "regions": [
+          "US"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search/about-this-result?origin=www.google.com&req=CrIBL2dvdG8_dXJsPUNBRVNlZ0hyT3pBVkd0SThGZHVwdDh4bTZzdnZvaWNoOXFfR1djUXFFaXdINER2RUhtQUdnT1JkSlE5ZnJXXzYxeEZLMWRVODVYUlJZdjdoX0FIcGlha2l6YUt5TGlOU1BjZUphNmlPNnZNRm9Yblp1cDlXY1BYaE5rWE1Ka1ZhanRkNlNyRkdlRkpoZ0ZvVXBDWjROSlRYOEJSOTBSbGs2ektfWEtETxIEGgIIABr3AxICCAAaACIAKgAyBggDEgJ1czoAQgQIARAASgBaEQgBEg1qb2JzLmxldmVyLmNvcgB6AIJAwAMIABAAGAAgACoNCgZweXRob24VvFZpQDKyAS9nb3RvP3VybD1DQUVTZWdIck96QVZHdEk4RmR1cHQ4eG02c3Z2b2ljaDlxX0dXY1FxRWl3SDREdkVIbUFHZ09SZEpROWZyV182MXhGSzFkVTg1WFJSWXY3aF9BSHBpYWtpemFLeUxpTlNQY2VKYTZpTzZ2TUZvWG5adXA5V2NQWGhOa1hNSmtWYWp0ZDZTckZHZUZKaGdGb1VwQ1o0TkpUWDhCUjkwUmxrNnpLX1hLRE86QVNlbmlvciBBcHBsaWNhdGlvbiBFbmdpbmVlciAoPGI-UHl0aG9uPC9iPi9KYXZhU2NyaXB0L1R5cGVzY3JpcHQpQq4BQmFzaWMgUXVhbGlmaWNhdGlvbnM6IDQrIHllYXJzIG9mIHByb2Zlc3Npb25hbCBzb2Z0d2FyZSBkZXZlbG9wbWVudCBleHBlcmllbmNlIHdpdGggZnVsbC1zdGFjayBhcHBsaWNhdGlvbnM7IFN0cm9uZyBwcm9maWNpZW5jeSBpbiA8Yj5QeXRob248L2I-OyBFeHBlcmllbmNlIGJ1aWxkaW5nJm5ic3A7Li4uIgIQAUgAWABoAA",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&req_token=CrIBL2dvdG8_dXJsPUNBRVNlZ0hyT3pBVkd0SThGZHVwdDh4bTZzdnZvaWNoOXFfR1djUXFFaXdINER2RUhtQUdnT1JkSlE5ZnJXXzYxeEZLMWRVODVYUlJZdjdoX0FIcGlha2l6YUt5TGlOU1BjZUphNmlPNnZNRm9Yblp1cDlXY1BYaE5rWE1Ka1ZhanRkNlNyRkdlRkpoZ0ZvVXBDWjROSlRYOEJSOTBSbGs2ektfWEtETxIEGgIIABr3AxICCAAaACIAKgAyBggDEgJ1czoAQgQIARAASgBaEQgBEg1qb2JzLmxldmVyLmNvcgB6AIJAwAMIABAAGAAgACoNCgZweXRob24VvFZpQDKyAS9nb3RvP3VybD1DQUVTZWdIck96QVZHdEk4RmR1cHQ4eG02c3Z2b2ljaDlxX0dXY1FxRWl3SDREdkVIbUFHZ09SZEpROWZyV182MXhGSzFkVTg1WFJSWXY3aF9BSHBpYWtpemFLeUxpTlNQY2VKYTZpTzZ2TUZvWG5adXA5V2NQWGhOa1hNSmtWYWp0ZDZTckZHZUZKaGdGb1VwQ1o0TkpUWDhCUjkwUmxrNnpLX1hLRE86QVNlbmlvciBBcHBsaWNhdGlvbiBFbmdpbmVlciAoPGI-UHl0aG9uPC9iPi9KYXZhU2NyaXB0L1R5cGVzY3JpcHQpQq4BQmFzaWMgUXVhbGlmaWNhdGlvbnM6IDQrIHllYXJzIG9mIHByb2Zlc3Npb25hbCBzb2Z0d2FyZSBkZXZlbG9wbWVudCBleHBlcmllbmNlIHdpdGggZnVsbC1zdGFjayBhcHBsaWNhdGlvbnM7IFN0cm9uZyBwcm9maWNpZW5jeSBpbiA8Yj5QeXRob248L2I-OyBFeHBlcmllbmNlIGJ1aWxkaW5nJm5ic3A7Li4uIgIQAUgAWABoAA",
+      "source": "Lever",
+      "read_more_link": "https://jobs.lever.co/egen/53b29838-b330-4e27-a4f5-798a82822b4a#:~:text=Basic%20Qualifications%3A,and%20containerized%20services%20(Docker%2C%20Kubernetes)"
+    },
+    {
+      "position": 4,
+      "title": "Robotics Software Engineer (C++ & Python)",
+      "link": "https://jobs.lever.co/SimbeRobotics/bffe760d-b1fb-49ff-b259-f0724c8661fa?lever-source%5B%5D=techjobs.sosv.com",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=CAESqAEB6zswFYM_Fhb10vAEP7c4-dpza0hPzKVFZl-z5BlEiPYDZx7S33AHbDV5ioqwCD0eOf_G8sWFE-mMmxYKW1sLmqIGfg-6KI64QTMscEP8-OZVSXHB_-4PLNiNpgsULefzZGxAh52NMR5kcbIGe5TW-lUV2q6C1huznSsPqwg35WhEMhObVeszQq040PbfbGF-CRJkDwU6orfLlLDoSXsIwHTqGx7Qvh4&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQFnoECCMQAQ&uoh=1",
+      "displayed_link": "https://jobs.lever.co › SimbeRobotics",
+      "favicon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp",
+      "snippet": "Simbe is looking for a strong Python & C++ engineer. In this role, you will ... Extremely adept in both C++ and Python programming; Proficient in shell ...",
+      "snippet_highlighted_words": [
+        "Python",
+        "Python"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "Simbe is looking for a strong Python & C++ engineer. In this role, you will ... Extremely adept in both C++ and Python programming; Proficient in shell ...",
+          "source_info_link": "https://jobs.lever.co/SimbeRobotics/bffe760d-b1fb-49ff-b259-f0724c8661fa?lever-source%5B%5D=techjobs.sosv.com",
+          "icon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp"
+        },
+        "languages": [
+          "en"
+        ],
+        "regions": [
+          "US"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search/about-this-result?origin=www.google.com&req=CvEBL2dvdG8_dXJsPUNBRVNxQUVCNnpzd0ZRemR1WFRJM25KbF9aWElRbVJHUVFIYm1XVTk1VFlWMmllN0hzOWF6M3BxaWJjdVRHeVcwaVZ2c1Fua2p6djBxWUZVSXhtZnhNcnBaczZZMVBlVlMzRW5WM3pIbndxRzdybEZlV2oxZURuRmNQOV9uY0JFaDlpbmFoZ2NTRmlpWTh6UUlIVXBJcnlqVERDZUZjb1hlOXg5ZDh3UXdueVl0Z1piTThKZFk1Y0l1ZmRVeUFwWnY0QWZ5cW5MdTVkaTdMOERpZUxQOUcxNmxrTUU3Q0lMY295czFJZxIEGgIIABq-BBICCAAaACIAKgAyBggDEgJ1czoAQgQIARAASgBaEQgBEg1qb2JzLmxldmVyLmNvcgB6AIJAhwQIABAAGAAgACoNCgZweXRob24VvZqAQDLxAS9nb3RvP3VybD1DQUVTcUFFQjZ6c3dGUXpkdVhUSTNuSmxfWlhJUW1SR1FRSGJtV1U5NVRZVjJpZTdIczlhejNwcWliY3VUR3lXMGlWdnNRbmtqenYwcVlGVUl4bWZ4TXJwWnM2WTFQZVZTM0VuVjN6SG53cUc3cmxGZVdqMWVEbkZjUDlfbmNCRWg5aW5haGdjU0ZpaVk4elFJSFVwSXJ5alREQ2VGY29YZTl4OWQ4d1F3bnlZdGdaYk04SmRZNWNJdWZkVXlBcFp2NEFmeXFuTHU1ZGk3TDhEaWVMUDlHMTZsa01FN0NJTGNveXMxSWc6RVNpbWJlIFJvYm90aWNzIC0gUm9ib3RpY3MgU29mdHdhcmUgRW5naW5lZXIgKEMrKyAmYW1wOyA8Yj5QeXRob248L2I-KUKyAVNpbWJlIGlzIGxvb2tpbmcgZm9yIGEgc3Ryb25nIDxiPlB5dGhvbjwvYj4gJmFtcDsgQysrIGVuZ2luZWVyLiBJbiB0aGlzIHJvbGUsIHlvdSB3aWxsIC4uLiBFeHRyZW1lbHkgYWRlcHQgaW4gYm90aCBDKysgYW5kIDxiPlB5dGhvbjwvYj4gcHJvZ3JhbW1pbmc7IFByb2ZpY2llbnQgaW4gc2hlbGwmbmJzcDsuLi4iAhABSABYAGgA",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&req_token=CvEBL2dvdG8_dXJsPUNBRVNxQUVCNnpzd0ZRemR1WFRJM25KbF9aWElRbVJHUVFIYm1XVTk1VFlWMmllN0hzOWF6M3BxaWJjdVRHeVcwaVZ2c1Fua2p6djBxWUZVSXhtZnhNcnBaczZZMVBlVlMzRW5WM3pIbndxRzdybEZlV2oxZURuRmNQOV9uY0JFaDlpbmFoZ2NTRmlpWTh6UUlIVXBJcnlqVERDZUZjb1hlOXg5ZDh3UXdueVl0Z1piTThKZFk1Y0l1ZmRVeUFwWnY0QWZ5cW5MdTVkaTdMOERpZUxQOUcxNmxrTUU3Q0lMY295czFJZxIEGgIIABq-BBICCAAaACIAKgAyBggDEgJ1czoAQgQIARAASgBaEQgBEg1qb2JzLmxldmVyLmNvcgB6AIJAhwQIABAAGAAgACoNCgZweXRob24VvZqAQDLxAS9nb3RvP3VybD1DQUVTcUFFQjZ6c3dGUXpkdVhUSTNuSmxfWlhJUW1SR1FRSGJtV1U5NVRZVjJpZTdIczlhejNwcWliY3VUR3lXMGlWdnNRbmtqenYwcVlGVUl4bWZ4TXJwWnM2WTFQZVZTM0VuVjN6SG53cUc3cmxGZVdqMWVEbkZjUDlfbmNCRWg5aW5haGdjU0ZpaVk4elFJSFVwSXJ5alREQ2VGY29YZTl4OWQ4d1F3bnlZdGdaYk04SmRZNWNJdWZkVXlBcFp2NEFmeXFuTHU1ZGk3TDhEaWVMUDlHMTZsa01FN0NJTGNveXMxSWc6RVNpbWJlIFJvYm90aWNzIC0gUm9ib3RpY3MgU29mdHdhcmUgRW5naW5lZXIgKEMrKyAmYW1wOyA8Yj5QeXRob248L2I-KUKyAVNpbWJlIGlzIGxvb2tpbmcgZm9yIGEgc3Ryb25nIDxiPlB5dGhvbjwvYj4gJmFtcDsgQysrIGVuZ2luZWVyLiBJbiB0aGlzIHJvbGUsIHlvdSB3aWxsIC4uLiBFeHRyZW1lbHkgYWRlcHQgaW4gYm90aCBDKysgYW5kIDxiPlB5dGhvbjwvYj4gcHJvZ3JhbW1pbmc7IFByb2ZpY2llbnQgaW4gc2hlbGwmbmJzcDsuLi4iAhABSABYAGgA",
+      "source": "Lever",
+      "read_more_link": "https://jobs.lever.co/SimbeRobotics/bffe760d-b1fb-49ff-b259-f0724c8661fa?lever-source%5B%5D=techjobs.sosv.com#:~:text=Simbe%20is%20looking%20for%20a,drives%20our%20Tally(TM)%20autonomous%20robots.&text=Extremely%20adept%20in%20both%20C%2B%2B,preferably%20with%20Bash%20and%20Python"
+    },
+    {
+      "position": 5,
+      "title": "Senior Python Engineer (AI) - capital.com",
+      "link": "https://jobs.lever.co/capital/2dc304a4-b37d-4599-864e-63c5e0167eb3",
+      "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=CAESfQHrOzAVHGwZeTBHCr8ccOna9eC6VholdA8EhYpaPn1iupB3pQ933O7fNh8BwZRvR8lZ1dM8fv11QO3oLzw9Bmxpd97BpXHU38haF01MEDk1_dm0raUKj2wjWgdF9apXQDJwjvZQHSQF_DkkGcNbHCsBthY8ORahzA8AtrY0&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQFnoECCcQAQ&uoh=1",
+      "displayed_link": "https://jobs.lever.co › capital",
+      "favicon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp",
+      "snippet": "3–5+ years of professional experience as a Python Developer, AI Engineer · Strong proficiency in Python 3. · Experience with frameworks such as FastAPI, FastMCP, ...",
+      "snippet_highlighted_words": [
+        "Python",
+        "Python"
+      ],
+      "about_this_result": {
+        "source": {
+          "description": "3–5+ years of professional experience as a Python Developer, AI Engineer · Strong proficiency in Python 3. · Experience with frameworks such as FastAPI, FastMCP, ...",
+          "source_info_link": "https://jobs.lever.co/capital/2dc304a4-b37d-4599-864e-63c5e0167eb3",
+          "icon": "https://serpapi.com/images/i/UklGRnAAAABXRUJQVlA4IGQAAAAwBACdASocABwAPrUurVanIacnG_DgFolAF2KgABL4YhH-JjPcYHPmfwAA15bfwMkUe3ithoG9lOp_mXcHbpwV_jf7Anj7Ikn7izLKwc0xZ1RysvyiXLRH5WxKejQNOtYgYAAA.webp"
+        },
+        "languages": [
+          "en"
+        ],
+        "regions": [
+          "US"
+        ]
+      },
+      "about_page_link": "https://www.google.com/search/about-this-result?origin=www.google.com&req=CrYBL2dvdG8_dXJsPUNBRVNmUUhyT3pBVkpCVXdPR25SNElQZl9sU0lYZ0FtcC0yUjVqRE9PbFAzM3RxaVE5b1VKOVdELWkyWDVWTkhDcDQ5S1YyMHNrYldOa0pwMmphUmhNSlVlb3RRYjljdmE1U2lHSTg1Uzh0S3lVNVVNT0VkTkpfajhzVkRQVEJ4YVlSWVl3cEVQd1Q1UlE1bzZyTXFYWFFEM1NpdnJpQUtHX1dmY0E4RUlmUS0SBBoCCAAajAQSAggAGgAiACoAMgYIAxICdXM6AEIECAEQAEoAWhEIARINam9icy5sZXZlci5jb3IAegCCQNUDCAAQABgAIAAqDQoGcHl0aG9uFbFkfUAytgEvZ290bz91cmw9Q0FFU2ZRSHJPekFWSkJVd09HblI0SVBmX2xTSVhnQW1wLTJSNWpET09sUDMzdHFpUTlvVUo5V0QtaTJYNVZOSENwNDlLVjIwc2tiV05rSnAyamFSaE1KVWVvdFFiOWN2YTVTaUdJODVTOHRLeVU1VU1PRWROSl9qOHNWRFBUQnhhWVJZWXdwRVB3VDVSUTVvNnJNcVhYUUQzU2l2cmlBS0dfV2ZjQThFSWZRLTo4U2VuaW9yIDxiPlB5dGhvbjwvYj4gRW5naW5lZXIgKEFJKSAtIGNhcGl0YWwuY29tIC0gTGV2ZXJCyAEz4oCTNSsgeWVhcnMgb2YgcHJvZmVzc2lvbmFsIGV4cGVyaWVuY2UgYXMgYSA8Yj5QeXRob248L2I-IERldmVsb3BlciwgQUkgRW5naW5lZXIgJm1pZGRvdDsgU3Ryb25nIHByb2ZpY2llbmN5IGluIDxiPlB5dGhvbjwvYj4gMy4gJm1pZGRvdDsgRXhwZXJpZW5jZSB3aXRoIGZyYW1ld29ya3Mgc3VjaCBhcyBGYXN0QVBJLCBGYXN0TUNQLCZuYnNwOy4uLiICEAFIAFgAaAA",
+      "about_page_serpapi_link": "https://serpapi.com/search.json?engine=google_about_this_result&google_domain=google.com&req_token=CrYBL2dvdG8_dXJsPUNBRVNmUUhyT3pBVkpCVXdPR25SNElQZl9sU0lYZ0FtcC0yUjVqRE9PbFAzM3RxaVE5b1VKOVdELWkyWDVWTkhDcDQ5S1YyMHNrYldOa0pwMmphUmhNSlVlb3RRYjljdmE1U2lHSTg1Uzh0S3lVNVVNT0VkTkpfajhzVkRQVEJ4YVlSWVl3cEVQd1Q1UlE1bzZyTXFYWFFEM1NpdnJpQUtHX1dmY0E4RUlmUS0SBBoCCAAajAQSAggAGgAiACoAMgYIAxICdXM6AEIECAEQAEoAWhEIARINam9icy5sZXZlci5jb3IAegCCQNUDCAAQABgAIAAqDQoGcHl0aG9uFbFkfUAytgEvZ290bz91cmw9Q0FFU2ZRSHJPekFWSkJVd09HblI0SVBmX2xTSVhnQW1wLTJSNWpET09sUDMzdHFpUTlvVUo5V0QtaTJYNVZOSENwNDlLVjIwc2tiV05rSnAyamFSaE1KVWVvdFFiOWN2YTVTaUdJODVTOHRLeVU1VU1PRWROSl9qOHNWRFBUQnhhWVJZWXdwRVB3VDVSUTVvNnJNcVhYUUQzU2l2cmlBS0dfV2ZjQThFSWZRLTo4U2VuaW9yIDxiPlB5dGhvbjwvYj4gRW5naW5lZXIgKEFJKSAtIGNhcGl0YWwuY29tIC0gTGV2ZXJCyAEz4oCTNSsgeWVhcnMgb2YgcHJvZmVzc2lvbmFsIGV4cGVyaWVuY2UgYXMgYSA8Yj5QeXRob248L2I-IERldmVsb3BlciwgQUkgRW5naW5lZXIgJm1pZGRvdDsgU3Ryb25nIHByb2ZpY2llbmN5IGluIDxiPlB5dGhvbjwvYj4gMy4gJm1pZGRvdDsgRXhwZXJpZW5jZSB3aXRoIGZyYW1ld29ya3Mgc3VjaCBhcyBGYXN0QVBJLCBGYXN0TUNQLCZuYnNwOy4uLiICEAFIAFgAaAA",
+      "source": "Lever",
+      "read_more_link": "https://jobs.lever.co/capital/2dc304a4-b37d-4599-864e-63c5e0167eb3#:~:text=3%E2%80%935%2B%20years%20of%20professional%20experience,a%20Python%20Developer%2C%20AI%20Engineer&text=Strong%20proficiency%20in%20Python%203.x%2C,asynchronous%20programming%2C%20REST%20API%20development&text=Experience%20with%20frameworks%20such%20as,FastAPI%2C%20FastMCP%2C%20Flask%2C%20or%20Django."
+    }
+  ],
+  "pagination": {
+    "current": 1,
+    "next": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=10&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8NMDegQIKxAW",
+    "other_pages": {
+      "2": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=10&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8tMDegQIKxAE",
+      "3": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=20&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8tMDegQIKxAG",
+      "4": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=30&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8tMDegQIKxAI",
+      "5": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=40&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8tMDegQIKxAK",
+      "6": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=50&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8tMDegQIKxAM",
+      "7": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=60&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8tMDegQIKxAO",
+      "8": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=70&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8tMDegQIKxAQ",
+      "9": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=80&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8tMDegQIKxAS",
+      "10": "https://www.google.com/search?q=site:jobs.lever.co+%22python%22&sca_esv=f805f121b9f8e54d&sxsrf=APpeQnshGzmMg1WYT7BmUsttWtleWlum6g:1792494867584&ei=E03XauLVIde7qtsP5unFkAY&start=90&sa=N&sstk=AS6-VmLqWAOaNMhTyuMSF20I0Olxub7zO_xW0UqqJIn_2dkbLt6c0Waf2zDYCKMPYKcY8_JGZp_GsRy8SqpmnvJzL4wMqqte1b9Ijw&ved=2ahUKEwiiq97eu8iXAxXXnWoFHeZ0EWIQ8tMDegQIKxAU"
+    }
+  },
+  "serpapi_pagination": {
+    "current": 1,
+    "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=10",
+    "next": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=10",
+    "other_pages": {
+      "2": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=10",
+      "3": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=20",
+      "4": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=30",
+      "5": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=40",
+      "6": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=50",
+      "7": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=60",
+      "8": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=70",
+      "9": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=80",
+      "10": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=site%3Ajobs.lever.co+%22python%22&start=90"
+    }
+  }
+}

@@ -3,7 +3,6 @@
 import json
 import re
 from collections.abc import Callable
-from html.parser import HTMLParser
 from typing import Protocol, runtime_checkable
 from urllib.parse import SplitResult, urlsplit
 
@@ -12,7 +11,7 @@ import httpx
 from harvester.httpclient import get_with_retry
 from harvester.models import Posting, ProbeResult
 
-SLUG_PATTERN = re.compile(r"^[a-z0-9][a-z0-9._-]*$")
+SLUG_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 
 
 class AtsError(Exception):
@@ -71,21 +70,26 @@ def path_segments(parts: SplitResult) -> list[str]:
     return [segment for segment in parts.path.split("/") if segment]
 
 
-def normalise_slug(candidate: str | None) -> str | None:
-    """Lower-cased slug if it looks like a board slug, else `None`.
+def normalise_slug(candidate: str | None, *, lowercase: bool) -> str | None:
+    """The slug if it looks like a board slug, else `None`.
 
-    Lever slugs are case-sensitive and always lower case; Greenhouse ignores case. Lower-casing
-    therefore works for both and keeps `Companies` free of case-only duplicates.
+    Each client says whether to lower-case, because ATSes differ (all checked live):
+    Greenhouse and Ashby ignore case, so lower-casing avoids case-only duplicates in `Companies`.
+    Lever and Workable are case-sensitive with one canonical spelling, which may have capitals
+    (`jobs.lever.co/SimbeRobotics` works, `simberobotics` is a 404), so their slugs are kept as
+    found. Slugs come from search-result URLs, which carry the canonical spelling.
     """
     if candidate is None:
         return None
-    slug = candidate.strip().lower()
+    slug = candidate.strip()
+    if lowercase:
+        slug = slug.lower()
     return slug if SLUG_PATTERN.match(slug) else None
 
 
-def require_slug(slug: str) -> str:
+def require_slug(slug: str, *, lowercase: bool) -> str:
     """Validated slug for building an API URL. Raises `ValueError` for anything unsafe."""
-    normalised = normalise_slug(slug)
+    normalised = normalise_slug(slug, lowercase=lowercase)
     if normalised is None:
         raise ValueError(f"invalid board slug {slug!r}")
     return normalised
@@ -123,46 +127,3 @@ def probe_endpoint(
             ats_name=ats_name, slug=slug, ok=False, status_code=exc.status_code, error=str(exc)
         )
     return ProbeResult(ats_name=ats_name, slug=slug, ok=True, status_code=200, job_count=job_count)
-
-
-_BLOCK_TAGS = frozenset(
-    {"address", "article", "blockquote", "br", "div", "footer", "h1", "h2", "h3", "h4", "h5",
-     "h6", "header", "hr", "li", "ol", "p", "pre", "section", "table", "td", "th", "tr", "ul"}
-)  # fmt: skip
-_SKIPPED_TAGS = frozenset({"script", "style"})
-
-
-class _TextExtractor(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__(convert_charrefs=True)
-        self.parts: list[str] = []
-        self._skip_depth = 0
-
-    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        if tag in _SKIPPED_TAGS:
-            self._skip_depth += 1
-        elif tag in _BLOCK_TAGS:
-            self.parts.append("\n")
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag in _SKIPPED_TAGS:
-            self._skip_depth = max(self._skip_depth - 1, 0)
-        elif tag in _BLOCK_TAGS:
-            self.parts.append("\n")
-
-    def handle_data(self, data: str) -> None:
-        if not self._skip_depth:
-            # Source newlines are insignificant in HTML; only block tags break lines.
-            self.parts.append(_WHITESPACE.sub(" ", data))
-
-
-_WHITESPACE = re.compile(r"\s+")
-
-
-def html_to_text(markup: str) -> str:
-    """Plain text from an HTML fragment: tags dropped, one line per block, whitespace collapsed."""
-    extractor = _TextExtractor()
-    extractor.feed(markup)
-    extractor.close()
-    lines = (" ".join(line.split()) for line in "".join(extractor.parts).split("\n"))
-    return "\n".join(line for line in lines if line)

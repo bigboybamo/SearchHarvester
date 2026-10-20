@@ -1,0 +1,33 @@
+{
+  "type": "search",
+  "query": {
+    "original": "site:jobs.lever.co \"zzqx7-no-such-term-8vkq\"",
+    "show_strict_warning": false,
+    "cleaned": "zzqx7-no-such-term-8vkq",
+    "is_navigational": true,
+    "is_news_breaking": false,
+    "spellcheck_off": false,
+    "country": "us",
+    "bad_results": true,
+    "should_fallback": true,
+    "postal_code": "",
+    "city": "",
+    "header_country": "",
+    "more_results_available": false,
+    "state": "",
+    "search_operators": {
+      "applied": true,
+      "cleaned_query": "zzqx7-no-such-term-8vkq",
+      "sites": [
+        "jobs.lever.co"
+      ]
+    },
+    "related_queries": []
+  },
+  "mixed": {
+    "type": "mixed",
+    "main": [],
+    "top": [],
+    "side": []
+  }
+}

@@ -19,6 +19,17 @@ RETRY_STATUSES = frozenset({429, 500, 502, 503, 504})
 MAX_RETRY_AFTER_SECONDS = 60.0
 
 
+def configure_cli_logging(level: int = logging.INFO) -> None:
+    """Logging for the command-line tools. Every entry point must use this, not `basicConfig`.
+
+    httpx logs each request's full URL, query string included, at INFO. SerpApi takes its key
+    as a query parameter, so those loggers are held at WARNING to keep secrets out of logs.
+    """
+    logging.basicConfig(level=level, format="%(levelname)s %(name)s: %(message)s")
+    for name in ("httpx", "httpcore"):
+        logging.getLogger(name).setLevel(logging.WARNING)
+
+
 def create_client(
     *, follow_redirects: bool = True, headers: Mapping[str, str] | None = None
 ) -> httpx.Client:
@@ -34,11 +45,16 @@ def get_with_retry(
     client: httpx.Client,
     url: str,
     *,
+    params: Mapping[str, str | int] | None = None,
+    headers: Mapping[str, str] | None = None,
     attempts: int = 3,
     backoff_seconds: float = 1.0,
     sleep: Callable[[float], None] | None = None,
 ) -> httpx.Response:
     """GET `url`, retrying transport errors and 429/5xx responses with exponential backoff.
+
+    `params` are added to the query string but never logged, so secrets such as an API key
+    passed there stay out of logs. Only `url` itself appears in log messages.
 
     The final response is returned whatever its status; callers decide what counts as failure.
     A transport error on the final attempt is re-raised, and a certificate verification error
@@ -51,7 +67,7 @@ def get_with_retry(
     for attempt in range(1, attempts + 1):
         delay = backoff_seconds * 2 ** (attempt - 1)
         try:
-            response = client.get(url)
+            response = client.get(url, params=params, headers=headers)
         except httpx.TransportError as exc:
             if attempt == attempts or is_certificate_error(exc):
                 raise

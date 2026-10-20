@@ -71,9 +71,10 @@ def test_parse_url_job_page_returns_slug(client: WorkableClient) -> None:
     assert client.parse_url(url) == "huggingface"
 
 
-def test_parse_url_mixed_case_slug_returns_lowercase(client: WorkableClient) -> None:
-    # Workable slugs are case-sensitive and lower case: /HuggingFace is a 404 on the live API.
-    assert client.parse_url("apply.workable.com/HuggingFace") == "huggingface"
+def test_parse_url_mixed_case_slug_keeps_case(client: WorkableClient) -> None:
+    # Workable slugs are case-sensitive (/HuggingFace is a 404 on the live API), so the
+    # spelling found in a search-result URL is kept rather than guessed.
+    assert client.parse_url("apply.workable.com/HuggingFace") == "HuggingFace"
 
 
 @pytest.mark.parametrize(

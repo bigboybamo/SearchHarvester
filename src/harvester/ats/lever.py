@@ -10,7 +10,6 @@ from pydantic.alias_generators import to_camel
 from harvester.ats.base import (
     AtsError,
     get_json,
-    html_to_text,
     normalise_slug,
     path_segments,
     probe_endpoint,
@@ -18,12 +17,15 @@ from harvester.ats.base import (
     split_url,
 )
 from harvester.models import Posting, ProbeResult
+from harvester.text import html_to_text
 
 logger = logging.getLogger(__name__)
 
 NAME = "Lever"
 HOSTS = frozenset({"jobs.lever.co"})
 API_BASE = "https://api.lever.co/v0/postings"
+# Lever slugs are case-sensitive with one canonical spelling (e.g. SimbeRobotics); keep it.
+LOWERCASE_SLUGS = False
 
 _RESPONSE = TypeAdapter(list[dict[str, object]])
 
@@ -65,13 +67,13 @@ class LeverClient:
         if parts.hostname not in HOSTS:
             return None
         segments = path_segments(parts)
-        return normalise_slug(segments[0]) if segments else None
+        return normalise_slug(segments[0], lowercase=LOWERCASE_SLUGS) if segments else None
 
     def board_url(self, slug: str) -> str:
-        return f"https://jobs.lever.co/{require_slug(slug)}"
+        return f"https://jobs.lever.co/{require_slug(slug, lowercase=LOWERCASE_SLUGS)}"
 
     def fetch_jobs(self, slug: str) -> list[Posting]:
-        slug = require_slug(slug)
+        slug = require_slug(slug, lowercase=LOWERCASE_SLUGS)
         # Without `limit` the API returns every posting in one response.
         items = self._parse_response(get_json(self._http, f"{API_BASE}/{slug}?mode=json"))
         postings: list[Posting] = []
@@ -101,7 +103,7 @@ class LeverClient:
         return postings
 
     def probe(self, slug: str) -> ProbeResult:
-        slug = require_slug(slug)
+        slug = require_slug(slug, lowercase=LOWERCASE_SLUGS)
         return probe_endpoint(
             NAME,
             slug,

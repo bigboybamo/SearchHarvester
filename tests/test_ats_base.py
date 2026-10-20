@@ -1,6 +1,7 @@
 import pytest
 
-from harvester.ats.base import html_to_text, normalise_slug, require_slug
+from harvester.ats.base import normalise_slug, require_slug
+from harvester.text import html_to_text
 
 
 def test_html_to_text_blocks_become_lines() -> None:
@@ -32,7 +33,8 @@ def test_html_to_text_empty_returns_empty() -> None:
 @pytest.mark.parametrize(
     ("candidate", "expected"),
     [
-        ("Acme", "acme"),
+        ("Acme", "Acme"),
+        ("SimbeRobotics", "SimbeRobotics"),
         (" acme-corp ", "acme-corp"),
         ("acme.io", "acme.io"),
         ("acme_2", "acme_2"),
@@ -44,10 +46,14 @@ def test_html_to_text_empty_returns_empty() -> None:
         (None, None),
     ],
 )
-def test_normalise_slug_cases(candidate: str | None, expected: str | None) -> None:
-    assert normalise_slug(candidate) == expected
+def test_normalise_slug_case_kept_cases(candidate: str | None, expected: str | None) -> None:
+    assert normalise_slug(candidate, lowercase=False) == expected
+
+
+def test_normalise_slug_lowercase_policy_lowercases() -> None:
+    assert normalise_slug(" SimbeRobotics ", lowercase=True) == "simberobotics"
 
 
 def test_require_slug_invalid_raises() -> None:
     with pytest.raises(ValueError):
-        require_slug("a/b")
+        require_slug("a/b", lowercase=False)

@@ -9,7 +9,6 @@ from pydantic import BaseModel, ConfigDict, ValidationError
 from harvester.ats.base import (
     AtsError,
     get_json,
-    html_to_text,
     normalise_slug,
     path_segments,
     probe_endpoint,
@@ -17,12 +16,15 @@ from harvester.ats.base import (
     split_url,
 )
 from harvester.models import Posting, ProbeResult
+from harvester.text import html_to_text
 
 logger = logging.getLogger(__name__)
 
 NAME = "Workable"
 HOSTS = frozenset({"apply.workable.com"})
 API_BASE = "https://apply.workable.com/api/v1/widget/accounts"
+# Workable slugs are case-sensitive (HuggingFace is a 404); keep the spelling as found.
+LOWERCASE_SLUGS = False
 
 # First path segments on apply.workable.com that are not company slugs. `/j/{shortcode}` is a
 # short link that only redirects to `/{slug}/j/{shortcode}`, so it carries no slug.
@@ -67,13 +69,13 @@ class WorkableClient:
         segments = path_segments(parts)
         if not segments or segments[0].lower() in RESERVED_SEGMENTS:
             return None
-        return normalise_slug(segments[0])
+        return normalise_slug(segments[0], lowercase=LOWERCASE_SLUGS)
 
     def board_url(self, slug: str) -> str:
-        return f"https://apply.workable.com/{require_slug(slug)}/"
+        return f"https://apply.workable.com/{require_slug(slug, lowercase=LOWERCASE_SLUGS)}/"
 
     def fetch_jobs(self, slug: str) -> list[Posting]:
-        slug = require_slug(slug)
+        slug = require_slug(slug, lowercase=LOWERCASE_SLUGS)
         # details=true adds the HTML description, which the harvester needs for keyword matching.
         response = self._parse_response(get_json(self._http, f"{API_BASE}/{slug}?details=true"))
         postings: list[Posting] = []
@@ -101,7 +103,7 @@ class WorkableClient:
         return postings
 
     def probe(self, slug: str) -> ProbeResult:
-        slug = require_slug(slug)
+        slug = require_slug(slug, lowercase=LOWERCASE_SLUGS)
         return probe_endpoint(
             NAME,
             slug,

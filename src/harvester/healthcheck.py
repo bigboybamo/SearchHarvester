@@ -33,7 +33,7 @@ from harvester.health_probes import (
     probe_platform,
     resolves,
 )
-from harvester.httpclient import create_client
+from harvester.httpclient import configure_cli_logging, create_client
 from harvester.models import AtsSourceGroup, DomainEntry, DomainKind
 
 logger = logging.getLogger(__name__)
@@ -309,7 +309,7 @@ def _run_url() -> str | None:
 
 
 def main(argv: Sequence[str] | None = None, *, resolve: Resolver = resolves) -> int:
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+    configure_cli_logging()
     args = _parse_args(argv)
     try:
         return _run(args, resolve)

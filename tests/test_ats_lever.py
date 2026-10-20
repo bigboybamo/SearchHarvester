@@ -66,9 +66,19 @@ def test_parse_url_hyphenated_slug_returns_slug(client: LeverClient) -> None:
     assert client.parse_url("jobs.lever.co/acme-corp/") == "acme-corp"
 
 
-def test_parse_url_mixed_case_slug_returns_lowercase(client: LeverClient) -> None:
-    # Lever slugs are case-sensitive and lower case: /Spotify is a 404 on the live API.
-    assert client.parse_url("https://jobs.lever.co/Spotify") == "spotify"
+def test_parse_url_mixed_case_slug_keeps_canonical_case(client: LeverClient) -> None:
+    # Lever slugs are case-sensitive with one canonical spelling: on the live API
+    # /SimbeRobotics is a 200 while /simberobotics is a 404 (and /Spotify a 404).
+    assert client.parse_url("https://jobs.lever.co/SimbeRobotics/bffe760d") == "SimbeRobotics"
+
+
+def test_fetch_jobs_mixed_case_slug_requested_verbatim(
+    client: LeverClient, respx_mock: respx.MockRouter
+) -> None:
+    route = respx_mock.get("https://api.lever.co/v0/postings/SimbeRobotics").respond(200, json=[])
+
+    assert client.fetch_jobs("SimbeRobotics") == []
+    assert route.called
 
 
 @pytest.mark.parametrize(

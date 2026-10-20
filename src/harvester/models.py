@@ -92,3 +92,17 @@ class ProbeResult(BaseModel):
 
     job_count: int | None = None
     error: str | None = None
+
+
+class SearchHit(BaseModel):
+    """One organic result from a search provider. Used only to discover company boards."""
+
+    model_config = ConfigDict(frozen=True)
+
+    provider: str
+    rank: int
+    """1-based position across pages, as the provider ranked it."""
+
+    title: str
+    url: str
+    snippet: str = ""
