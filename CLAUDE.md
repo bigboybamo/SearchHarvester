@@ -147,6 +147,8 @@ Verify each endpoint's response shape against a live call once, then save it as 
 - Quoting strips one leading and one trailing `"`, escapes inner `"` as `\"`, then wraps the term in `"`.
 - Exclude: each term becomes its own `-"term"` (never `-(A OR B)`).
 
+**Provider query limits.** Brave rejects (HTTP 422) any query over **600 characters** or **75 words**: undocumented, found by probing on 2026-10-20. Characters are code points, not bytes; words are whitespace-separated, so `site:x`, `OR` and `-"term"` each count as one. Real JobSearchBuilder queries reach 643 characters, so the harvester must split a query that is over the limit, most naturally by dividing the `site:` block into groups of domains and repeating the other blocks in each part. Each part is a separate paid search. Every `SearchProvider` exposes `max_query_chars` / `max_query_words` (`None` for SerpAPI) and refuses an over-limit query locally with `QueryTooLongError`, before any request is made.
+
 Add a test that reproduces a known JobSearchBuilder output byte-for-byte.
 
 ---
@@ -275,7 +277,7 @@ Scheduling locally: Windows Task Scheduler runs `.venv\Scripts\python.exe -m har
 Mark phases `[x]` as they merge to master. At the start of a session, Claude reads the first unchecked phase as the current one.
 
 ### Open decisions (ask the user; don't assume)
-- [ ] Brave vs SerpAPI as the default, decided after the Phase 5 side-by-side comparison
+- [x] Brave vs SerpAPI as the default: **Brave**, decided 2026-10-20 after the Phase 5 comparison on three real JobSearchBuilder queries. Brave returned 0 off-site hits (SerpAPI: 12 of 50, Google loosening `site:` on long queries), gives 20 results per paid request against 10, costs about a fifth as much, and fits the expected 150–900 searches/month inside its free credit. Its one weakness was rejecting a 643-character query, handled by splitting (see Query building). SerpAPI stays available via `SEARCH_PROVIDER=serpapi`.
 - [ ] Port `QueryBuilder`, or persist the built query in JobSearchBuilder (e.g. a `BuiltQuery` column)?
 - [ ] Final `Companies` / `JobPostings` schema, applied in JobSearchBuilder's `CreateTables.sql`
 - [ ] Digest channel: email, Slack, or none

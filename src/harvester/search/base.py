@@ -22,6 +22,10 @@ class SearchError(Exception):
         self.status_code = status_code
 
 
+class QueryTooLongError(SearchError):
+    """The query breaks the provider's limits. Raised before any request, so nothing is billed."""
+
+
 @runtime_checkable
 class SearchProvider(Protocol):
     """A paid web search API that supports `site:` queries."""
@@ -35,18 +39,39 @@ class SearchProvider(Protocol):
     max_pages: int
     """How many pages the provider will serve for one query."""
 
+    max_query_chars: int | None
+    """Longest query accepted, in characters (not bytes); `None` if the provider sets no limit."""
+
+    max_query_words: int | None
+    """Most whitespace-separated words accepted (`site:x`, `OR`, `-"a"` each count); or `None`."""
+
     def search(self, query: str, page: int = 0) -> list[SearchHit]:
         """One page (0-based) of organic results. Raises `SearchError`; each call is billed."""
         ...
 
 
 def validate_request(provider: SearchProvider, query: str, page: int) -> str:
-    """Stripped `query`, after checking `query` and `page` are usable. Raises `ValueError`."""
+    """Stripped `query`, after checking it and `page` are usable.
+
+    Raises `ValueError` for an empty query or a page out of range, and `QueryTooLongError` when
+    the query breaks the provider's limits, so an over-long query never costs a request.
+    """
     text = query.strip()
     if not text:
         raise ValueError("search query is empty")
     if not 0 <= page < provider.max_pages:
         raise ValueError(f"{provider.name} serves pages 0-{provider.max_pages - 1}, not {page}")
+    chars, words = len(text), len(text.split())
+    if provider.max_query_chars is not None and chars > provider.max_query_chars:
+        raise QueryTooLongError(
+            f"{provider.name} accepts at most {provider.max_query_chars} characters; "
+            f"this query has {chars}"
+        )
+    if provider.max_query_words is not None and words > provider.max_query_words:
+        raise QueryTooLongError(
+            f"{provider.name} accepts at most {provider.max_query_words} words; "
+            f"this query has {words}"
+        )
     return text
 
 
@@ -97,6 +122,14 @@ def _error_detail(body: object) -> str | None:
     if isinstance(error, str):
         return error
     if isinstance(error, dict):
+        # Brave puts the specific reason in meta.errors[].msg ("... at most 600 characters ...")
+        # and only a generic sentence in detail.
+        meta = error.get("meta")
+        reasons = meta.get("errors") if isinstance(meta, dict) else None
+        if isinstance(reasons, list):
+            messages = [str(r["msg"]) for r in reasons if isinstance(r, dict) and r.get("msg")]
+            if messages:
+                return "; ".join(messages)
         detail = error.get("detail") or error.get("message") or error.get("code")
         return str(detail) if detail else None
     return None

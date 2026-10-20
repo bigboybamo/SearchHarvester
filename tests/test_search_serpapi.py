@@ -153,3 +153,16 @@ def test_search_unexpected_shape_raises(
 
     with pytest.raises(SearchError, match="response shape"):
         serpapi.search("q")
+
+
+def test_search_long_query_sent_without_local_limit(
+    serpapi: SerpApiProvider, respx_mock: respx.MockRouter
+) -> None:
+    # Live: SerpApi accepted a 643-character, 73-word query that Brave rejects.
+    query = "site:jobs.lever.co " + " ".join(["python"] * 120)
+    route = respx_mock.get(ENDPOINT).respond(200, content=load_fixture("serpapi_google.json"))
+
+    serpapi.search(query)
+
+    assert route.called
+    assert (serpapi.max_query_chars, serpapi.max_query_words) == (None, None)

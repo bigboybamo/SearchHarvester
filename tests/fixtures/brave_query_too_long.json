@@ -1,0 +1,28 @@
+{
+  "type": "ErrorResponse",
+  "error": {
+    "id": "03288dae-2d0a-4db1-8e3a-7458a888f832",
+    "status": 422,
+    "detail": "Unable to validate request parameter(s)",
+    "meta": {
+      "errors": [
+        {
+          "type": "too_long",
+          "loc": [
+            "query",
+            "q"
+          ],
+          "msg": "Search query must be at most 600 characters (you entered 653).",
+          "input": "site:jobs.lever.co (\"exampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexample\")",
+          "ctx": {
+            "field_type": "Value",
+            "max_length": 600,
+            "actual_length": 653
+          }
+        }
+      ]
+    },
+    "code": "VALIDATION"
+  },
+  "time": 1792496383
+}

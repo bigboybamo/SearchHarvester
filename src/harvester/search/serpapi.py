@@ -51,6 +51,10 @@ class SerpApiProvider:
     name = NAME
     page_size = PAGE_SIZE
     max_pages = MAX_PAGES
+    # SerpApi accepted every query tried, up to 643 characters and 73 words. Google may quietly
+    # ignore words past roughly the 32nd, so long queries can lose their trailing exclusions.
+    max_query_chars = None
+    max_query_words = None
 
     def __init__(self, http: httpx.Client, api_key: str) -> None:
         self._http = http

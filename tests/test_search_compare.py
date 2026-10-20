@@ -11,7 +11,7 @@ from harvester import config
 from harvester.ats.registry import AtsRegistry, default_registry
 from harvester.models import SearchHit
 from harvester.search import compare
-from harvester.search.base import SearchError
+from harvester.search.base import QueryTooLongError, SearchError
 from harvester.search.compare import (
     ProviderRun,
     QueryComparison,
@@ -292,3 +292,13 @@ def test_main_real_serpapi_key_never_logged(
     assert respx_mock.calls.call_count == 2
     assert key not in caplog.text
     assert key not in captured.out + captured.err
+
+
+def test_run_provider_local_refusal_recorded_but_not_counted(registry: AtsRegistry) -> None:
+    provider = FakeProvider("brave", [QueryTooLongError("brave accepts at most 600 characters")])
+
+    run = run_provider(provider, "q", pages=2, registry=registry)
+
+    assert run.searches == 0
+    assert run.error == "brave accepts at most 600 characters"
+    assert provider.calls == [("q", 0)]

@@ -24,6 +24,12 @@ PAGE_SIZE = 20
 MAX_PAGES = 10
 """`offset` is a 0-based page index, documented maximum 9."""
 
+# Undocumented; found by probing on 2026-10-20. Over either limit Brave answers HTTP 422 with
+# the reason in error.meta.errors[].msg. Characters are code points (600 characters taking 689
+# UTF-8 bytes was accepted) and exactly 600 is allowed; words are whitespace-separated.
+MAX_QUERY_CHARS = 600
+MAX_QUERY_WORDS = 75
+
 
 class _Result(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -50,6 +56,8 @@ class BraveProvider:
     name = NAME
     page_size = PAGE_SIZE
     max_pages = MAX_PAGES
+    max_query_chars = MAX_QUERY_CHARS
+    max_query_words = MAX_QUERY_WORDS
 
     def __init__(self, http: httpx.Client, api_key: str) -> None:
         self._http = http

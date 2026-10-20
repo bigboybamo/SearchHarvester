@@ -7,7 +7,7 @@ import pytest
 import respx
 
 from conftest import load_fixture
-from harvester.search.base import SearchError, SearchProvider
+from harvester.search.base import QueryTooLongError, SearchError, SearchProvider
 from harvester.search.brave import ENDPOINT, BraveProvider
 
 KEY = "brave-test-key"
@@ -146,3 +146,67 @@ def test_search_invalid_request_raises_without_calling_api(
 ) -> None:
     with pytest.raises(ValueError):
         brave.search(query, page)
+
+
+# --- Query limits (found by probing the live API on 2026-10-20) ---------------------------------
+
+
+def _query(chars: int, *, words: int = 3, letter: str = "a") -> str:
+    """A query of exactly `chars` characters and `words` whitespace-separated words."""
+    head = " ".join(["site:jobs.lever.co"] + ["w"] * (words - 2))
+    return f"{head} {letter * (chars - len(head) - 1)}"
+
+
+def test_search_exactly_600_characters_sent(
+    brave: BraveProvider, respx_mock: respx.MockRouter
+) -> None:
+    route = respx_mock.get(ENDPOINT).respond(200, content=load_fixture("brave_no_results.json"))
+
+    brave.search(_query(600))
+
+    assert route.called
+
+
+def test_search_600_multibyte_characters_sent(
+    brave: BraveProvider, respx_mock: respx.MockRouter
+) -> None:
+    # Live: 600 characters taking 689 UTF-8 bytes was accepted, so the limit counts characters.
+    query = _query(600, letter="é")
+    assert len(query.encode()) > 600
+    route = respx_mock.get(ENDPOINT).respond(200, content=load_fixture("brave_no_results.json"))
+
+    brave.search(query)
+
+    assert route.called
+
+
+def test_search_601_characters_refused_without_request(brave: BraveProvider) -> None:
+    # respx would fail any request, so reaching the assertion proves none was made.
+    with pytest.raises(QueryTooLongError, match="at most 600 characters; this query has 601"):
+        brave.search(_query(601))
+
+
+def test_search_75_words_sent_76_refused(
+    brave: BraveProvider, respx_mock: respx.MockRouter
+) -> None:
+    route = respx_mock.get(ENDPOINT).respond(200, content=load_fixture("brave_no_results.json"))
+
+    brave.search(_query(200, words=75))
+    with pytest.raises(QueryTooLongError, match="at most 75 words; this query has 76"):
+        brave.search(_query(200, words=76))
+
+    assert route.call_count == 1
+
+
+def test_search_too_long_rejected_by_api_shows_specific_reason(
+    brave: BraveProvider, respx_mock: respx.MockRouter
+) -> None:
+    # If the local limits ever drift from Brave's, the API's own explanation still comes through.
+    respx_mock.get(ENDPOINT).respond(422, content=load_fixture("brave_query_too_long.json"))
+
+    with pytest.raises(SearchError) as excinfo:
+        brave.search("q")
+
+    assert str(excinfo.value) == (
+        "brave returned HTTP 422: Search query must be at most 600 characters (you entered 653)."
+    )

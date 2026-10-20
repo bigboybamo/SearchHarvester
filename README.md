@@ -21,8 +21,8 @@ Early development. See the roadmap in [CLAUDE.md](CLAUDE.md#roadmap):
 | Harvester | `python -m harvester.harvest` | Phase 7 (needs new tables in JobSearchBuilder) |
 
 The shared ATS clients for Greenhouse, Lever, Ashby and Workable live in `harvester.ats`; the
-Brave and SerpAPI search providers live in `harvester.search` (verified against live calls; the
-choice of default waits on the comparison below).
+Brave (the default) and SerpAPI search providers live in `harvester.search`. Brave rejects
+queries over 600 characters or 75 words, so long queries have to be split.
 
 ## Setup (Windows)
 

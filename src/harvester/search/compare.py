@@ -25,7 +25,7 @@ from harvester.ats.registry import AtsRegistry, default_registry
 from harvester.config import ConfigError, load_settings
 from harvester.httpclient import configure_cli_logging, create_client
 from harvester.models import SearchHit
-from harvester.search.base import SearchError, SearchProvider
+from harvester.search.base import QueryTooLongError, SearchError, SearchProvider
 from harvester.search.factory import create_provider
 
 logger = logging.getLogger(__name__)
@@ -101,13 +101,19 @@ def run_provider(
 ) -> ProviderRun:
     run = ProviderRun(provider.name)
     for page in range(min(pages, provider.max_pages)):
-        run.searches += 1
         try:
             hits = provider.search(query, page)
+        except QueryTooLongError as exc:
+            # Refused before any request, so it costs nothing and isn't counted as a search.
+            run.error = str(exc)
+            logger.warning("%s refused the query: %s", provider.name, exc)
+            break
         except SearchError as exc:
+            run.searches += 1
             run.error = str(exc)
             logger.warning("%s failed on page %d: %s", provider.name, page, exc)
             break
+        run.searches += 1
         run.hits.extend(hits)
         if len(hits) < provider.page_size:
             break
